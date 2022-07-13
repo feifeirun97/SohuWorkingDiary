@@ -6,7 +6,14 @@
 //
 ```
 
-> Span为何自动填充
+> uploadRecords每分都在post请求
 
+![image-20220711103117880](/Users/xufei/Library/Application Support/typora-user-images/image-20220711103117880.png)
 
+> 什么时候写type？
 
+![image-20220711103842638](/Users/xufei/Library/Application Support/typora-user-images/image-20220711103842638.png)
+
+> 接口走通
+
+![image-20220711110352514](/Users/xufei/Library/Application Support/typora-user-images/image-20220711110352514.png)
