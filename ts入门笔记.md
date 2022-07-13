@@ -271,8 +271,169 @@ class Circle {
 }
 ```
 
+#### TobeContinued...
 
 
 
+### 枚举
 
-//受控 与非受控组建的区别
+> 计算成员没看懂
+
+在一定范围内系列常量比如一周七天，上下左右四个方向。这时候就可以用枚举定义
+
+#### 基本使用
+
+数字枚举特点: 数字递增 + 反向映射
+
+```tsx
+//定义一个数字枚举
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right
+}
+//数字递增从0开始
+console.log(Direction.Up)        // 0
+console.log(Direction.Down)      // 1
+console.log(Direction.Left)      // 2
+console.log(Direction.Right)     // 3
+//反向映射
+console.log(Direction[0])      // Up
+console.log(Direction[1])      // Down
+console.log(Direction[2])      // Left
+console.log(Direction[3])      // Right
+//*注意若第一个元素有初始值，从初始值开始递增
+enum Direction {
+    Up = 6,
+    Down
+}
+console.log(Direction.Up)        // 6
+console.log(Direction[7])				 // Down
+```
+
+#### 反向映射原理
+
+```js
+//编译后的代码
+var Diection
+(function (Direction) {
+    Direction[Direction["Up"] = 6] = "Up";
+    Direction[Direction["Down"] = 7] = "Down";
+    Direction[Direction["Left"] = 8] = "Left";
+    Direction[Direction["Right"] = 9] = "Right";
+})(Direction || (Direction = {}));
+//console.log(Direction["Up"] = 6)  output:6
+//最后结果{6: 'Up', 7: 'Down', 8: 'Left', 9: 'Right', Up: 6, Down: 7, Left: 8, Right: 9}
+```
+
+#### 手动赋值
+
+定义一个枚举来管理外卖状态。有时候后端返回的数据状态的乱的就需要我们手动赋值。如
+
+```tsx
+enum ItemStatus {
+    Buy = 100,
+    Send = 20,
+    Receive = 1
+}
+console.log(ItemStatus['Buy'])      // 100
+console.log(ItemStatus['Send'])     // 20
+console.log(ItemStatus['Receive'])  // 1
+```
+
+#### 字符串枚举
+
+提供具有具体语义的字符串, 可以更容易理解代码和调试
+
+```tsx
+enum Direction { Up = "UP", Down = "DOWN" }
+const value = "UP"
+if (value === Direction.UP) { }
+```
+
+#### 常量枚举
+
+编译出来的JS代码会简洁很多提高了性能
+
+```tsx
+const enum Direction { Up = "UP", Down = "DOWN" }
+```
+
+### 类型推论
+
+没有明确类型时会**帮助提供类型**. 但是既然写TS除非时函数返回void, 其他最好都定义好
+
+```tsx
+//定义时不赋值: 自动推导为any
+let a
+
+//初始化变量: 自动推导为当前type
+let username = 'lin'
+username = 3														//error
+
+//设置默认参数: 参数推导为当前type
+function printAge(num = 18) { console.log(num) }
+printAge('lin')													//error
+
+//决定函数返回值: 自动推断
+function printAge(num = 18) { return num }
+interface PrintAge { (num: number): string }
+const printAge1: PrintAge = printAge		//error
+
+//最佳通用类型: 等价对比如下
+let arr = [0, 1, null, 'lin']
+let arr: (string | number | null)[] = [0, 1, null, 'lin']
+let pets = [new Dog(), new Cat()]
+let pets:(Dog | Cat)[]
+```
+
+
+
+## Ts进阶
+
+### 联合类型union
+
+一个变量可以支持多种类型, 提高了类型可拓展性, 在未赋值前只能访问他们共有的方法和属性
+
+```tsx
+let nun: number | string
+num.length 					//error 非公共属性
+num = 'lin'
+num.length 					//ok
+```
+
+### 交叉类型&
+
+把几种类型合并起来
+
+对象形状拓展, 比如Person有name和age属性, 而Student在name和age基础上还有grade属性
+
+```tsx
+interface Person {
+  name: string
+  age: number
+}
+//这和类的继承是一模一样的, 这里Student就继承了Person上的属性
+type Student = Person & { grade: number }
+const s1:Student; s1.grade
+```
+
+### 类型别名type aliase
+
+类比项目中配`alias`不用写相对路径直接`@/componets/index`
+
+```tsx
+//Name此时就相当于string
+type Name = string
+type NameResolver = () => string
+type NameOrResolver = Name | NameResolver
+function getName(n: NameOrResolver): Name {
+  if (typeof n == 'string') return n
+  else return n()
+}
+//传入字符串和函数都行
+getName('lin'); getName(()=>'lin')
+```
+
+#### 用法
