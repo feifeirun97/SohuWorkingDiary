@@ -28,7 +28,7 @@ Never
 let list: number[] =[1,2,3]
 ```
 
-### 元组类型
+### 元组类型tuple
 
 tuple并不意味2个元素列表。tuple指定类型都能push进去
 
@@ -275,7 +275,7 @@ class Circle {
 
 
 
-### 枚举
+### 枚举Enum
 
 > 计算成员没看懂
 
@@ -394,13 +394,26 @@ let pets:(Dog | Cat)[]
 
 ### 联合类型union
 
-一个变量可以支持多种类型, 提高了类型可拓展性, 在未赋值前只能访问他们共有的方法和属性
+一个变量可以支持多种类型, 提高了类型可拓展性, **在未赋值前只能访问他们共有的方法和属性**
 
 ```tsx
 let nun: number | string
 num.length 					//error 非公共属性
 num = 'lin'
 num.length 					//ok
+```
+
+#### 类型保护type guards
+
+```tsx
+//因为 number 类型上没有 length 属性, 必须是公共属性
+function getLength(arg: number | string): number { return arg.length } // error
+
+//正确
+function getLength(arg: number | string): number {
+    if(typeof arg === 'string') { return arg.length } 
+  	else { return arg.toString().length }
+}
 ```
 
 ### 交叉类型&
@@ -436,4 +449,164 @@ function getName(n: NameOrResolver): Name {
 getName('lin'); getName(()=>'lin')
 ```
 
-#### 用法
+#### 综合用例
+
+```tsx
+type Name = string																//基本类型
+type arrItem = number | string										//联合类型
+const arr: arrItem[] = [1,'2',3]
+type Person = { name: Name }
+type Student = Person & { garde:number }  				//交叉类型
+type Teacher = Person & { marjor: string }
+type StudentAndTeacherList = [Student, Teacher] 	//元祖类型
+
+const s1:Student  = {garde: 213, name:'lin'}
+```
+
+### type和interface区别
+
+```tsx
+//这个例子可以用type也可以用interface
+interface Person {
+  name:string 
+  age:number
+}
+type Person2 = {
+	name:string
+  age:number
+}
+const p1 = { name:'lin', age:18 }
+const p2: Person2 = { name:'lin', age:18 }
+```
+
+#### 相同点
+
++ 都可以定义一个对象或函数
+
+```tsx
+type addType = (num1:number, num2:number) => number
+interface addType2 { (num1:number, num2:number) => number }
+const add:addType = (num1, num2) => { return num1 + num2 }
+```
+
++ 都允许相互继承
+
+```tsx
+//接口继承接口
+interface Person { name:string }
+interface Student extends Person { grade:number }
+
+//type继承type
+type Person = { name: string }
+type Student = Person & { grade: number }
+
+//接口继承type
+type Person = { name: string }
+interface Student extends Person { grade:number }
+
+//type继承接口
+interface Person { name:string }
+type Student = Person & { grade: number }
+```
+
+#### 不同点
+
++ interfaces接口是Ts设计出来用于定义对象类型的, **描述对象形状**
++ type是**类型别名**, 给各种类型定义别名使Ts更简介清晰
++ type可以声明基本类型, 联合类型, 交叉类型, 元组, interface不行
++ interface可以合并**重复声明**, type不行
+
+```tsx
+//interface重复声明会合并
+interface Person { name: string }
+interface Person { age: number }
+const person: Person = { name: 'lin', age: 18 }
+//type重复声明报错
+type Person = { name: string }
+type Person = { age: number }
+```
+
+#### 总结
+
+组合或者交叉类型:type; extends或implements用接口interface
+
+其他情况如果是定义对象或者函数就随意
+
+
+
+### 类型断言as
+
+值`as`类型。使用类型断言来告诉Ts: 开发者比编译器更清楚这个参数是什么类型, 就别给我报错了
+
+```tsx
+function getLengrh(arg:number | string): number {
+  const str = arg as string
+  if (str.length) return str.length
+  else {
+    const num = arg as number
+    return num.toString().length
+  }
+}
+
+let someValue: any = "this is a string";
+let strLength: number = (someValue as string).length;
+```
+
+⚠️类型断言不是类型转换, 把一个类型断言成联合类型中不存在的类型会报错
+
+
+
+### 字面量类型/常量
+
+```tsx
+type ButtonSize = 'mini' | 'small' | 'normal' | 'large'
+type Sex = 'female' | 'male'
+let sex:Sex = 'unkonwn' 						//error
+```
+
+
+
+### 泛型
+
+解决输入输出一致的问题
+
+#### 引子
+
+```tsx
+//初始需求: 打印传参并返回。输入输出都是string
+function print(arg:string):string { console.log(arg); return arg }
+
+//变更需求: 同时能打印number
+function print(arg:string |number):string|number { console.log(arg); return arg }
+
+//变更需求: 同时能打印string数组, number数组, 甚至多种类型
+//⚠️尽量不要any: 传入返回的并不统一, 甚至出现bug。
+function print(arg:any):any { console.log(arg); return arg }
+const res:string = print(123) 												//返回的number但类型定义的是string, Ts并不报错
+```
+
+#### 基本使用
+
+泛型在`<>`里写类型参数, 一般可以用`T`表示。`T`就像一个占位符或者说一个变量, 在使用时可以把定义的类型像参数一样传入, 可以原封不动的输出。
+
+```tsx
+function print<T>(arg:T):T { return arg } //输入输出类型不一致就报错
+print<string>('hello')                    //定义T为string
+print("hellno")                           //Ts自动推导为T=string
+
+type Print = <T>(arg: T) => T 						//函数+泛型
+const printFn:Print = function print(arg){ return arg}
+```
+
+```tsx
+interface Iprint<T> { (arg:T):T }					//接口+泛型
+function print<T>(arg:T) { return arg }
+const p1: Iprint<number> = print
+```
+
+#### 默认参数
+
+```tsx
+interface Iprint<T = number> { (arg:T):T }
+```
+
