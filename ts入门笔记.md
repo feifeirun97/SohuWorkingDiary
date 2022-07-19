@@ -566,9 +566,15 @@ let sex:Sex = 'unkonwn' 						//error
 
 
 
-### 泛型
+### 泛型-Generics-基础
 
-解决输入输出一致的问题
+从字面上理解泛型`Generics`就是一般的广泛的。是指在定义函数,接口,类的时候**不用预先指定具体类型, 而是使用时再指定**。
+
+泛型中的 `T` 就像一个占位符、或者说一个变量，在使用的时候可以把定义的类型**像参数一样传入**，它可以**原封不动地输出**。
+
+泛型**在成员之间提供有意义的约束**，这些成员可以是：函数参数、函数返回值、类的实例成员、类的方法等。
+
+![image-20220718110057272](https://s2.loli.net/2022/07/18/OhTbScWej26tnsP.png)
 
 #### 引子
 
@@ -609,4 +615,106 @@ const p1: Iprint<number> = print
 ```tsx
 interface Iprint<T = number> { (arg:T):T }
 ```
+
+#### 处理多个参数
+
+假设有这么一函数, 传入一个只有两项的tuple, 交换位置后返回。用泛型就会很灵活
+
+```tsx
+function swap<T, U>(tuple: [T, U]): [U,T] {
+   return [tuple[1],tuple[0]]
+}
+```
+
+#### 函数副作用操作 [API举例]
+
+泛型可以约束函数的参数类型, 也可以用在函数执行副作用操作的时候。我们希望调API时清晰的知道返回类型是什么数据结构。
+
+```tsx
+//Ts优化前
+//通用异步请求方法, 根据不同url请求返回不同类型的数据
+function request(url:string) { return fetch(url).then(res=>res.json()) }
+//这时候返回结果就是一个any类型, 非常讨厌
+request("user/info").then( res => console.log(res) )
+
+//Ts优化后
+function UserInfo { name:string; age:number }
+function request2<T>(url:string): Promise<T> {
+  return fetch(url).then(res=>res.json())
+}
+//这样就很舒服地拿到接口返回的数据类型
+request<UserInfo>('user/info').age
+```
+
+#### 约束泛型
+
+假设有这么一函数, 打印传入参数长度。因为不确定T是否有length属性, 可以使用**泛型继承接口**来符合约束.
+
+```tsx
+//会报错因为不确定T是否有length属性
+function printLength<T>(arg:T): T { return arg.length}
+//现在要约束这个泛型一定有length属性: 和interface结合
+//泛型继承接口<T extends ILength>
+interface ILength { length: number }
+function printLength<T extends ILength>(arg:T): T { return arg.length }
+const str = printLength('lin')
+const arr = printLength([1,2,3])
+const obj = printLength({ length: 10 })
+const num = printLength(3) 					//error，
+```
+
+
+
+### 泛型--应用
+
+可以在定义函数，接口或类的时候，不预先指定具体类型而是在使用的时候在指定类型。
+
+#### 泛型约束类
+
+定义一个栈，如果像出入栈的元素类型统一可以这么写。⚠️泛型无法约束类的静态成员`static`
+
+```tsx
+class Stack<T> {
+  private data: T[] = []
+  push(item:T) { return this.data.push(item) }
+  pop():T|undefined { return this.data,pop() }
+}
+const s1 = new Stack<number>()
+s1.push(100)	//success
+s1.push('s')	//error
+```
+
+#### 泛型约束接口
+
+```tsx
+interface IKeyValue<T, U> {
+    key: T
+    value: U
+}
+const k1:IKeyValue<number, string> = { key: 18, value: 'lin'}
+const k2:IKeyValue<string, number> = { key: 'lin', value: 18}
+```
+
+#### 泛型定义数组
+
+```tsx
+const arr: number[] = [1,2,3]
+const arr: Array<number> = [1,2,3]
+```
+
+
+
+### 高级类型
+
+To be continued...
+
+
+
+### Ts声明文件
+
+#### declare
+
+第三方库需要引用声明文件才能获得对应的代码补全, 接口提示等功能
+
+#### .d.ts
 

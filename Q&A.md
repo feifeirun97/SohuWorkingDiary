@@ -1,3 +1,5 @@
+## Week1-2
+
 > Redux中的中间件redux-thunk处理异步 和 redux-saga有什么区别？
 
 ```js
@@ -87,8 +89,46 @@
 
 <img src="/Users/xufei/Library/Application Support/typora-user-images/image-20220713095521953.png" alt="image-20220713095521953" style="zoom: 67%;" />
 
+> routes配置不生效
+
+```js
+//微前端架构 - 父项目有自己的routes，父项目在接口网站配置的不走routes.ts
+
+//子项目配置的路由在微前段基座里匹配当前浏览器中的路由。需要在父项目配置
+```
 
 
-//筛选 只有 请选择 三个字
 
-//输入框 改动
+## Week3
+
+> 接口走通decorator.ts
+
+```tsx
+Cons中包含的是什么？
+//常量汇总，先不用管
+注释风格@？
+//前段约定俗成的规范 https://www.html.cn/doc/jsdoc/howto-es2015-modules.html
+Promise<T>怎么理解？ 
+//promise原生自带api适配ts
+//Promise<T>的泛型T代表成功态后resolve的值，resolve(value)
+request extend？
+//https://github.com/umijs/umi-request/blob/master/README_zh-CN.md#创建实例
+removeAllunfefKey递归删除空值？
+//不用管仅删空值, 留给后端也行
+request.ts中的Response类型？
+//
+
+```
+
+
+
+
+
+### 前端技术分享
+
+> 为什么所有请求都要放在services？而不是分散在各个组件中？
+
+```
+
+```
+
