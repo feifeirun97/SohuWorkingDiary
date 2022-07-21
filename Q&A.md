@@ -113,14 +113,20 @@ Promise<T>怎么理解？
 //Promise<T>的泛型T代表成功态后resolve的值，resolve(value)
 request extend？
 //https://github.com/umijs/umi-request/blob/master/README_zh-CN.md#创建实例
+//https://blog.csdn.net/dazeka/article/details/123231400
 removeAllunfefKey递归删除空值？
 //不用管仅删空值, 留给后端也行
 request.ts中的Response类型？
-//
-
+//umi自带
 ```
 
+> 接口报错？
 
+```js
+//copy cUrl私聊后端
+```
+
+![image-20220719150917918](/Users/xufei/Library/Application Support/typora-user-images/image-20220719150917918.png)
 
 
 
@@ -132,3 +138,11 @@ request.ts中的Response类型？
 
 ```
 
+链接: https://pan.baidu.com/s/1DpDH3WzsyyjK6eTnqHbTZw 提取码: eipg 
+--来自百度网盘超级会员v6的分享
+
+
+
+//usememo
+
+///Users/xufei/Desktop/smart-qw/code/client/src/pages/Market/Materials/PosterTab/index.tsx
