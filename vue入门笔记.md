@@ -12,7 +12,7 @@
 
 ### 开发环境
 
-+ Homebrew
++ #### Homebrew
 
 + Node.js
 
@@ -35,3 +35,11 @@ vue init webpack-simple 工程名字<工程名字不能用中文>
 npm install vue-router vue-resource --save 
 ```
 
+### 规范
+
++ `App.vue`文件下`<template>`内写html
++ `App.vue`文件下`<script>`内写js
++ `App.vue`文件下`<style>`内写html
++ `<template>`内有且只有一个`<div>`
++ 数据要写在`data(){return {}}`内
++ 
