@@ -215,12 +215,34 @@ UI稿很多内容靠猜，前端实现后发现不是想要的效果
 沟通非常浪费时间
 ```
 
-> 默认展示图片
+> 默认展示图片？
 
 ```js
 //imageFallback
 //default-avator
+```
 
+> 给一个url如何实现点击下载？
+
+```js
+//方法一失败
+<a href="http://www.test.com/down/name.excel" download="name">
+//方法二失败
+const downloadURI = (uri, name) => {
+  const link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+//方法三转文件流失败
+blob()
+
+//解决：腾讯云跨域
+
+//最终原因是图片资源有问题
+//后端上传失败了资源错误了，等后端解决
 ```
 
 
@@ -231,6 +253,16 @@ UI稿很多内容靠猜，前端实现后发现不是想要的效果
 
 跨域下载：网络资源转换成文件流才能下载。组内还未做过。File
 
-#### ❓Tooltip
+//正则
 
-ui
+jpg png jpeg gif那些trigger 1
+
+其余走0
+
+
+
+### 代码问题：
+
+connectState any问题
+
+任务中心
