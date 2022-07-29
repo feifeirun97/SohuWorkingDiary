@@ -239,7 +239,7 @@ export default {
 
 #### JS表达式
 
-js语句不生效，单个表达式生效
+js语句不生效，单个表达式生效ˉ
 
 ```jsx
 {{ number + 1 }}
