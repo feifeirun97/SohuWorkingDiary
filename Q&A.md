@@ -249,7 +249,7 @@ blob()
 
 ```js
 //smartCase-test.json路由文件通过接口发过来
-//测试环境 - 编辑 - smartQw - 修改 - 备注 - 提交
+//详情 - 测试环境 - 编辑 - smartQw - 修改 - 备注 - 提交
 //正式环境不要动
 ```
 
@@ -259,5 +259,24 @@ blob()
 //utils.string
 ```
 
-> Txt
+> 导出excel
 
+```typescript
+  const exportExcel = () => {
+    exportQRCodeMainExcel({
+      realtorId: realtorFilter || undefined,
+      flag: searchType,
+      startTime: dateFilter[0].unix() * 1000,
+      endTime: dateFilter[1].unix() * 1000,
+      pageNo: pagination.current,
+      pageSize: pagination.pageSize,
+    });
+  };
+  export async function exportQRCodeMainExcel(params: IQRCodeMainDataListParam) {
+  return download(`${MainDomain}/manage/customerQrCode/excel`, params);
+}
+
+
+```
+
+//设计稿，定长padding为16px 10px
