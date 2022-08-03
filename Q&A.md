@@ -279,4 +279,48 @@ blob()
 
 ```
 
+> Pro自封组件流程-基于dumi
+
+```js
+//pro-components本地 
+//新建分支到pakage文件夹下
+//focus add pro-tabs
+//选择package
+```
+
+> modal内tabs全局覆盖样式未生效
+
+![在这里插入图片描述](https://s2.loli.net/2022/08/02/CU4RS8ANHFXLVYI.png)
+
+```js
+//原因：弹框节点和项目节点同级，被挂载到外面了，覆盖样式不生效
+//解决：+ 给Modal加属性 getContainer = {false} 让它挂载进来。
+//		 + 直接封装成pro组件调用。	
+```
+
 //设计稿，定长padding为16px 10px
+
+
+
+
+
+#### #Todo1
+
+tag inline-block
+
+写个class包一下
+
+![image-20220801155233335](/Users/xufei/Library/Application Support/typora-user-images/image-20220801155233335.png)
+
+#### #Todo2
+
+Due 8 12th
+
+
+
+
+
+AdapUser组件添加员工
+
+AddTagsFormItem添加标签 参考filtertable，吧antd拿过来坐一个受控组件
+
