@@ -259,25 +259,7 @@ blob()
 //utils.string
 ```
 
-> 导出excel
-
-```typescript
-  const exportExcel = () => {
-    exportQRCodeMainExcel({
-      realtorId: realtorFilter || undefined,
-      flag: searchType,
-      startTime: dateFilter[0].unix() * 1000,
-      endTime: dateFilter[1].unix() * 1000,
-      pageNo: pagination.current,
-      pageSize: pagination.pageSize,
-    });
-  };
-  export async function exportQRCodeMainExcel(params: IQRCodeMainDataListParam) {
-  return download(`${MainDomain}/manage/customerQrCode/excel`, params);
-}
-
-
-```
+## Week5
 
 > Pro自封组件流程-基于dumi
 
@@ -298,7 +280,18 @@ blob()
 //		 + 直接封装成pro组件调用。	
 ```
 
-//设计稿，定长padding为16px 10px
+> 为何到三级路由用push(), 返回用replace？
+
+```js
+//window.history.xxx()
+push -- 向history栈里面添加一条新记录，这个时候用户点击浏览器的回退按钮可以回到之前的路径；
+go -- 这个方法的参数是一个整数，意思是在 history 记录中向前或者后退多少步，类似 window.history.go(n)，n可为正数可为负数；
+goBack -- 返回上一页，相当于window.history.go(-1);
+replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方法不会向history里面添加新的记录，点击返回，会跳转到上上一个页面。上一个记录是不存在的；
+
+//在history中没有的记录，用push跳转，如果有即将跳转的页面这条记录了，就需要用go来返回到指定页面，不能再push，否则可能会导致返回事件不能按照我们预期的进行。如果是要替换当前页面，那就用replace。
+//【注意】Umi3封装了router要依照文档
+```
 
 
 
