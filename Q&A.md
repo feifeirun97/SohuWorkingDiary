@@ -34,8 +34,19 @@
 
 > flex自适应。flex 11代表什么？gap如何操作？**
 
-```js
+```jsx
 //代表所占位置的大小
+<div class="flex-gap">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+.flex-gap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 ```
 
 > 多个文字+筛选框占比四等份怎么做？同时有间隔20要求
@@ -312,17 +323,18 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 ```js
 //一行24个单位，通过span控制占位，通过gutter控制间隔
 //通过offset控制偏移。offset=4向右移4个单位。栅格左侧的间隔格数，间隔内不可以有栅格
-//
 ```
 
-> 安全防护
+> 为什么项目中没有Umi3官方文档中文件夹
 
 ```js
-//修改密码✅
-//安装杀毒✅
+//smart-case
+//缺少.umirc.ts - .env - .dist
+//smart-qw
+//缺少.umirc.ts - .dist
 ```
 
-![image-20220804174625353](https://s2.loli.net/2022/08/04/nkzgC6ShAoQ7dwB.png)
+
 
 #### #Todo2
 
