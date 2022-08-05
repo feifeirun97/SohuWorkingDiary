@@ -293,27 +293,41 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 //【注意】Umi3封装了router要依照文档
 ```
 
+> antd table里的inline-block自带内边距如何消除？ 
+>
 
+```js
+//给父级加一个font-size: 0
+```
 
+> UI稿二级页面内边距如何定位的
 
+```js
+//不是定死的内边距
+//如果内容第一个是标题上padding20，如果不是上padding20
+```
 
-#### #Todo1
+> Antd栅格系统
 
-tag inline-block
+```js
+//一行24个单位，通过span控制占位，通过gutter控制间隔
+//通过offset控制偏移。offset=4向右移4个单位。栅格左侧的间隔格数，间隔内不可以有栅格
+//
+```
 
-写个class包一下
+> 安全防护
 
-![image-20220801155233335](/Users/xufei/Library/Application Support/typora-user-images/image-20220801155233335.png)
+```js
+//修改密码✅
+//安装杀毒✅
+```
+
+![image-20220804174625353](https://s2.loli.net/2022/08/04/nkzgC6ShAoQ7dwB.png)
 
 #### #Todo2
 
 Due 8 12th
 
-
-
-
-
 AdapUser组件添加员工
 
 AddTagsFormItem添加标签 参考filtertable，吧antd拿过来坐一个受控组件
-

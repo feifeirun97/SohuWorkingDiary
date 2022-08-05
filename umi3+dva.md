@@ -160,3 +160,62 @@ if (keyboard == 'right') {}
 
 
 
+
+
+## Umi基础
+
+### 目录结构
+
+#### 根目录
+
++ package.json 
+
+  包含插件和插件集，以 `@umijs/preset-`、`@umijs/plugin-`、`umi-preset-` 和 `umi-plugin-` 开头的依赖会被自动注册为插件或插件集
+
++ .umirc.ts
+
+  包含 umi 内置功能和插件的配置文件
+
++ .env
+
+  环境变量如`PORT=8888;COMPRESS=none`
+
++ dist文件夹
+
+  `umi build`打包后的文件
+
++ mock文件夹
+
+  目录下所有ts,js都会被解析为mock文件
+
++ public文件夹
+
+  此目录下所有文件会被 copy 到输出路径
+
++ src文件夹
+
+  资源文件夹
+
+#### Src文件夹
+
++ .umi目录
+
+  
+
+```js
+.
+├── package.json
+├── .umirc.ts
+├── .env
+├── dist
+├── mock
+├── public
+└── src
+    ├── .umi
+    ├── layouts/index.tsx
+    ├── pages
+        ├── index.less
+        └── index.tsx
+    └── app.ts
+```
+
