@@ -334,6 +334,20 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 //缺少.umirc.ts - .dist
 ```
 
+## Week6
+
+> 大中小按钮要不要封装一下？
+
+```css
+margin-top: 20px;
+margin-left: 10px;
+width: 72px;
+height: 24px;
+align-items: center;
+display: flex;
+justify-content: center;
+```
+
 
 
 #### #Todo2

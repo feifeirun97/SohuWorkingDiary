@@ -247,7 +247,7 @@ Umi 在 `.umirc.ts`[配置较简单时] 或 `config/config.ts`[配置较复杂�
 
 
 
-### 路由
+### 配置式路由
 
 Umi作为单页面应用, 页面地址的跳转本质是不同组件的切换, 不会重新请求服务获取HTML[ 只在应用初始化时加载一次 ]
 
@@ -317,7 +317,7 @@ history.push({ pathname: '/list', query: { a: 'b' } });
 
 **路由组件参数**
 
-路由组件可通过 `props` 获取到包含`url`, `location`, 'history'等属性
+路由组件可通过 `props` 获取到包含`url`, `location`, `history`等属性
 
 ```jsx
 export default function(props) {
@@ -326,3 +326,10 @@ export default function(props) {
 }
 ```
 
+### 约定式路由
+
+不需要手写配置, 当没有routes配置时自动进入约定式路由, 分析`src/pages`拿到配置
+
+### 全局 layout
+
+约定 `src/layouts/index.tsx` 为全局路由。返回一个 React 组件，并通 `props.children` 渲染子组件。比如以下目录结构，
