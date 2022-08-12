@@ -336,23 +336,68 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 ## Week6
 
-> 大中小按钮要不要封装一下？
+> 为什么Form.item下面写多个组件实现传值有问题?
 
-```css
-margin-top: 20px;
-margin-left: 10px;
-width: 72px;
-height: 24px;
-align-items: center;
-display: flex;
-justify-content: center;
+```js
+//Form.item下面只能存在一个受控组件
+//Form支持valuesOnchange
 ```
 
+> 为什么pro-components的打包没有出es和lib？
 
+```js
+//
+```
+
+> 拖放是用啥做的？
+
+```
+"https://t2.focus-img.cn/focusimg/scrm/1693/渠道活码.png"
+"http://file.focus-res.cn/focusfile/scrm/9_1660185428064/SampleVideo_360x240_2mb.mp4"
+http://file.focus-res.cn/focusfile/scrm/1694/任务列表 (1).xlsx
+
+
+ "https://t1.focus-img.cn/focusimg/scrm/1696/bot.jpg"
+```
+
+请选择客户
+
+发布+客户数0再提示
+
+
+
+```
+//inline-block自带外边距清除
+.clear-inline-block-margin {
+  font-size: 0;
+  -webkit-text-size-adjust: none;
+}
+
+```
+
+许飞 
+
+1、极客云-任务中心开发(8.8 - 8.10)
+
+2、极客云-任务中心联调(8.10 - 8.12)
+
+#### Todo1
+
+员工群发记录骨架品
+
+Form ={form}子form实例绑定到父form
+
+url正则匹配
+
+部门type1
+
+员工type2
 
 #### #Todo2
 
 Due 8 12th
+
+inputwithnumber
 
 AdapUser组件添加员工
 
