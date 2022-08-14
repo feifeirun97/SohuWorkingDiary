@@ -233,7 +233,7 @@ UI稿很多内容靠猜，前端实现后发现不是想要的效果
 //default-avator
 ```
 
-> 给一个url如何实现点击下载？
+> 给一个url如何实现点击下载？⚠️未解决
 
 ```js
 //方法一失败
@@ -267,7 +267,7 @@ blob()
 > 中文占2字符，总长不超过40如何计算？
 
 ```js
-//utils.string
+//utils.string -getLength方法
 ```
 
 ## Week5
@@ -332,6 +332,7 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 //缺少.umirc.ts - .env - .dist
 //smart-qw
 //缺少.umirc.ts - .dist
+//都写在config里面了
 ```
 
 ## Week6
@@ -343,22 +344,39 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 //Form支持valuesOnchange
 ```
 
-> 为什么pro-components的打包没有出es和lib？
+> 为什么pro-components的打包没有出es和lib？⚠️未解决
+
+```js
+//等待与克庭沟通
+```
+
+> 拖放是用啥做的？⚠️未解决
+
+```js
+//项目中已有方案是RND和sortablejs，但不适合本次场景
+//Antd官方推荐react-sortable-hoc
+//不行！待解决
+```
+
+> 如何整个文件ts忽略报错⚠️未解决
 
 ```js
 //
 ```
 
-> 拖放是用啥做的？
+> 判断对象中部分元素不用去map或者forEach
 
+```jsx
+//用array.some()
 ```
-"https://t2.focus-img.cn/focusimg/scrm/1693/渠道活码.png"
-"http://file.focus-res.cn/focusfile/scrm/9_1660185428064/SampleVideo_360x240_2mb.mp4"
-http://file.focus-res.cn/focusfile/scrm/1694/任务列表 (1).xlsx
 
 
- "https://t1.focus-img.cn/focusimg/scrm/1696/bot.jpg"
-```
+
+## Week7
+
+
+
+
 
 请选择客户
 
@@ -402,3 +420,431 @@ inputwithnumber
 AdapUser组件添加员工
 
 AddTagsFormItem添加标签 参考filtertable，吧antd拿过来坐一个受控组件
+
+
+
+**Todo List**
+
++ 字数InputWithNumber
++ 超出20个任务toast提示
++ 表单校验
+  + 整体报错 help 请求取消
+  + ref useForm
+
++ 大小定死
+
++ 文本输入框
+
+  useImperativeHandle
+
+
+
+
+
+
+
+```
+import UploadFile from './UploadFile';
+import UploadImg from './UploadImage';
+import { Button, Image, message } from 'antd';
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import UploadVideo from './UploadVideo';
+import UploadLink from './UploadLink';
+import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import { arrayMove } from 'react-sortable-hoc';
+import MenuIcon from '@/assets/menu.png';
+import styles from './index.less';
+import { useForm } from 'antd/lib/form/Form';
+
+let valuesList = [];
+
+const demo = {};
+const UploadBox: React.FC<any> = (props) => {
+  const [openValidate, setOpenValidate] = useState<boolean>(false);
+  // const [valuesList, setValuesList] = useState<any>({});
+  const [curValue, setCurValue] = useState();
+  const [list, setList] = useState<any>([
+    {
+      id: 2,
+      type: 'image',
+      completed: false,
+      values: [],
+    },
+
+    {
+      id: 5,
+      type: 'link',
+      completed: false,
+      values: [],
+    },
+  ]);
+  useEffect(() => {
+    setCurValue(props.value);
+  }, [props.value]);
+  const onSubValuesChange = (values: any, itemId: number) => {
+    // setValuesList((pre) => ({ ...pre, [itemId]: values }));
+    valuesList = values;
+    // demo = { ...demo, [itemId]: values };
+    // props.onChange(demo);
+    console.log('valuesList 123', valuesList);
+    console.log(values, itemId);
+  };
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    setList(arrayMove(list, oldIndex, newIndex));
+  };
+
+  //----------------------------------------------------------------
+  useEffect(() => {
+    console.log(valuesList);
+  }, [valuesList]);
+
+  const renderUpload = useCallback((item: any) => {
+    switch (item.type) {
+      case 'file':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadFile />
+          </div>
+        );
+      case 'link':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadLink
+              // asyncValues={curValue?.[item.id]}
+              // openValidate={openValidate}
+              onChange={(values: any) => onSubValuesChange(values, item.id)}
+            />
+          </div>
+        );
+      case 'video':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadVideo />
+          </div>
+        );
+      case 'image':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadImg
+              onChange={(sourceUrl: string, mediaId: string) => {
+                list.forEach((ele) => {
+                  if (ele.id == item.id) {
+                    ele.completed = true;
+                    ele.mediaId = mediaId;
+                    ele.url = sourceUrl;
+                  }
+                });
+                setList([...list]);
+              }}
+              value={item.url}
+            />
+          </div>
+        );
+    }
+  }, []);
+  const addList = (type: any) => {
+    if (list.length == 0) {
+      setList([{ id: 0, type: type, completed: false }]);
+    } else if (list.length > 4) {
+      message.error('最多添加20条内容');
+    } else {
+      list.push({ id: list[list.length - 1].id + 1, type: type, values: [] });
+      setList([...list]);
+    }
+  };
+
+  const DragHandle = SortableHandle(() => (
+    <span className={styles.dragHandle}>{<img src={MenuIcon} />}</span>
+  ));
+  const SortableItem = SortableElement(({ value }) => (
+    <div>
+      <DragHandle />
+      <Button
+        type="link"
+        style={{
+          fontSize: 14,
+          lineHeight: '20px',
+          height: '20px',
+          margin: '0 0 5px 656px',
+        }}
+        onClick={(e) => {
+          const ids = list.map((item) => item.id);
+          list.splice(ids.indexOf(value.id), 1);
+          setList([...list]);
+        }}
+      >
+        删除
+      </Button>
+      {renderUpload(value)}
+    </div>
+  ));
+
+  const Sortable = SortableContainer(({ children }) => {
+    return <div>{children}</div>;
+  });
+
+  const SortableList = SortableContainer(({ items }) => {
+    return (
+      <div
+        className="draggableUploadBox"
+        style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+      >
+        {list.map((value, idx) => {
+          return <SortableItem key={`item-${value.id}`} index={idx} value={value} />;
+        })}
+      </div>
+    );
+  });
+
+  return (
+    <div className={styles.uploadBox}>
+      <div style={{ display: 'inline-flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
+        <Button type="primary" onClick={() => addList('text')}>
+          添加文本
+        </Button>
+        <Button type="primary" onClick={() => addList('image')}>
+          添加图片
+        </Button>
+        <Button type="primary" onClick={() => addList('video')}>
+          添加视频
+        </Button>
+        <Button type="primary" onClick={() => addList('file')}>
+          添加文件
+        </Button>
+        <Button type="primary" onClick={() => addList('link')}>
+          添加链接
+        </Button>
+        <Button type="primary" onClick={() => setOpenValidate(!openValidate)}>
+          validate
+        </Button>
+      </div>
+      <Sortable onSortEnd={onSortEnd} useDragHandle>
+        <div
+          className="draggableUploadBox"
+          style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+        >
+          {list.map((value, index) => (
+            <SortableItem key={`item-${value.id}`} index={index} value={value} />
+          ))}
+        </div>
+      </Sortable>
+      <div
+        className="draggableUploadBox"
+        style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+      />
+    </div>
+  );
+};
+
+export default forwardRef((props, ref) => <UploadBox {...props} />);
+
+```
+
+```tsx
+//new
+import UploadFile from './UploadFile';
+import UploadImg from './UploadImage';
+import { Button, Image, message } from 'antd';
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import UploadVideo from './UploadVideo';
+import UploadLink from './UploadLink';
+
+import styles from './index.less';
+import { deepClone } from '@/utils/utils';
+
+const UploadBox: React.FC<any> = (props) => {
+  const [valueList, setValueList] = useState({});
+  const [list, setList] = useState<any>([
+    {
+      id: 2,
+      type: 'image',
+    },
+
+    {
+      id: 5,
+      type: 'link',
+    },
+  ]);
+
+  useEffect(() => {
+    console.log('box中的value表', valueList);
+  }, [valueList]);
+  const renderUpload = useCallback((item: any) => {
+    switch (item.type) {
+      case 'file':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadFile />
+          </div>
+        );
+      case 'link':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadLink
+              onChange={(values: any) => {
+                // valueList[item.id] = values;
+
+                setValueList((pre) => ({ ...pre, [item.id]: values }));
+              }}
+            />
+          </div>
+        );
+      case 'video':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadVideo />
+          </div>
+        );
+      case 'image':
+        return (
+          <div
+            key={item.id}
+            style={{
+              width: 700,
+              borderRadius: '2px',
+              border: '1px solid rgba(0,0,0,0.1500)',
+              padding: '20px 12px',
+            }}
+          >
+            <UploadImg
+              onChange={(sourceUrl: string, mediaId: string) => {
+                list.forEach((ele) => {
+                  if (ele.id == item.id) {
+                    ele.completed = true;
+                    ele.mediaId = mediaId;
+                    ele.url = sourceUrl;
+                  }
+                });
+                setList([...list]);
+              }}
+              value={item.url}
+            />
+          </div>
+        );
+    }
+  }, []);
+
+  const addList = (type: any) => {
+    if (list.length == 0) {
+      setList([{ id: 0, type: type, completed: false }]);
+    } else if (list.length > 4) {
+      message.error('最多添加20条内容');
+    } else {
+      list.push({ id: list[list.length - 1].id + 1, type: type, values: [] });
+      setList([...list]);
+    }
+  };
+
+  return (
+    <div className={styles.uploadBox}>
+      <div style={{ display: 'inline-flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
+        <Button type="primary" onClick={() => addList('text')}>
+          添加文本
+        </Button>
+        <Button type="primary" onClick={() => addList('image')}>
+          添加图片
+        </Button>
+        <Button type="primary" onClick={() => addList('video')}>
+          添加视频
+        </Button>
+        <Button type="primary" onClick={() => addList('file')}>
+          添加文件
+        </Button>
+        <Button type="primary" onClick={() => addList('link')}>
+          添加链接
+        </Button>
+      </div>
+
+      <div
+        className="draggableUploadBox"
+        style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+      >
+        {list.map((value, idx) => (
+          <div>
+            <Button
+              type="link"
+              style={{
+                fontSize: 14,
+                lineHeight: '20px',
+                height: '20px',
+                margin: '0 0 5px 656px',
+              }}
+              onClick={(e) => {
+                const ids = list.map((item) => item.id);
+                list.splice(ids.indexOf(value.id), 1);
+                setList([...list]);
+              }}
+            >
+              删除
+            </Button>
+            {renderUpload(value)}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default forwardRef((props, ref) => <UploadBox {...props} />);
+
+```
+
