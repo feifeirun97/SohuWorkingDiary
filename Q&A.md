@@ -374,59 +374,262 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 ## Week7
 
+> 升级pro组件
 
+```js
+//focus check -f
+```
 
+> yarn add 报错
+>
 
+```js
+// yrm ls
+// yrm use -x
+```
 
-请选择客户
+> 三元表达式优化=>强制类型转换？
 
-发布+客户数0再提示
+```js
+//!!两次转换
+```
 
+> common-form样式不需要影响到嵌套的form⚠️未解决
+
+```js
+//
+```
+
+## Week8
+
+> ref如何暴露截取
+
+```js
+//useImperativeHandle 可以让你在使用 ref 时自定义暴露给父组件的实例值。在大多数情况下，应当避免使用 ref 这样的命令式代码。useImperativeHandle 应当与 forwardRef 一起使用：
 
 
 ```
-//inline-block自带外边距清除
-.clear-inline-block-margin {
-  font-size: 0;
-  -webkit-text-size-adjust: none;
-}
 
-```
 
-许飞 
-
-1、极客云-任务中心开发(8.8 - 8.10)
-
-2、极客云-任务中心联调(8.10 - 8.12)
 
 #### Todo1
 
-员工群发记录骨架品
-
-url正则匹配
-
-部门type1
-
-员工type2
-
-
++ 员工群发记录骨架品
++ Ref
 
 **Todo List**
 
++ 表情触发优化    //点击可拖拽元素外隐藏选中框
+
 + 时间选择器可以引入range常量
-+ 
-+ 
-+ 上传问价loading
 
-**image**
++ 边距30
 
-+ 只能上传 JPG/PNG 文件!
-+ 图片大小不能超过10MB!
-+ ![image-20220815145256835](/Users/xufei/Library/Application Support/typora-user-images/image-20220815145256835.png)
++ 任务内容url正则匹配
 
+  ```
+  import { getFullLength } from '@/utils/utils.string';
+  import type { FormInstance } from 'antd';
+  import { Form, Input } from 'antd';
+  import { Picker } from 'emoji-mart';
+  import 'emoji-mart/css/emoji-mart.css';
+  import { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react';
+  import type { WelcomeTextPropsType } from './type';
+  import style from './index.less';
+  import { debounce } from 'lodash';
+  export interface WelcomeTextRef {
+    welcomeTextForm: FormInstance<{ title: string }>;
+  }
+  const UploadTxt = forwardRef((props: WelcomeTextPropsType, ref) => {
+    const { onChange, initText, showTagKeys } = props;
+    const [showEmoji, setShowEmojiMart] = useState(false);
+    const [form] = Form.useForm();
+  
+    useEffect(() => {
+      const initialValues = {
+        title: JSON.stringify(initText) == '{}' ? '' : initText,
+      };
+      form.setFieldsValue(initialValues);
+    }, [initText, form]);
+  
+    useImperativeHandle(ref, () => ({
+      welcomeTextForm: form,
+    }));
+  
+    const changeEmojiMartStatus = () => {
+      // 显示emoji组件
+      setShowEmojiMart(!showEmoji);
+    };
+  
+    const getTitle = () => {
+      return form.getFieldValue('title') || '';
+    };
+  
+    const setParentText = debounce(() => onChange?.(getTitle()), 300);
+  
+    const addSomeText = (t: string) => {
+      // 获取当前值,然后加上emoji，然后设置该值
+      const title = getTitle();
+      const initialValues = {
+        title: `${title}${t}`, // TODO: 浏览器输入框，输入emoji表情时光标位置不太美观
+      };
+      form.setFieldsValue(initialValues);
+      form.validateFields();
+      setParentText();
+    };
+  
+    const addEmoji = (e: { native: string }) => {
+      addSomeText(e.native);
+    };
+  
+    const addEmployeeName = () => {
+      addSomeText('#员工姓名#');
+    };
+  
+    const addNickName = () => {
+      addSomeText('#客户昵称#');
+    };
+  
+    let tags = [
+      {
+        key: 'emoji',
+        text: '表情',
+        handleClick: changeEmojiMartStatus,
+      },
+      {
+        key: 'name',
+        text: '员工姓名',
+        handleClick: addEmployeeName,
+      },
+      {
+        key: 'nickName',
+        text: '客户昵称',
+        handleClick: addNickName,
+      },
+    ];
+    if (showTagKeys) {
+      tags = tags.filter((item) => showTagKeys.includes(item.key));
+    }
+  
+    const emojiStyle = useMemo(() => {
+      return {
+        position: 'absolute',
+        bottom: '140px',
+        left: '-12px',
+        zIndex: showEmoji ? '100' : '-1000',
+        opacity: showEmoji ? 1 : 0,
+      };
+    }, [showEmoji]);
+  
+    const emojiI18n = {
+      search: '搜索',
+      clear: '清除',
+      notfound: '未找到',
+      categories: {
+        search: '搜索结果',
+        recent: '近期使用',
+        smileys: '笑脸 & 表情',
+        people: '人物',
+        nature: '动物 & 自然',
+        foods: '食物 & 饮料',
+        activity: '运动',
+        places: '旅行 & 地点',
+        objects: '符号',
+        symbols: '象形',
+        flags: '旗帜',
+        custom: '自定义',
+      },
+      categorieslabel: 'Emoji 类别',
+    };
+  
+    useEffect(() => {
+      document.body.addEventListener('click', (e: any) => {
+        const emojiNode = document.querySelector('.emoji-mart');
+        console.log(document.querySelector('.emoji-mart'));
+  
+        if (emojiNode?.contains(e.target.className) && showEmoji) {
+          setShowEmojiMart(false);
+        }
+        // alert('click outside');
+      });
+    }, []);
+  
+    return (
+      <div className={style.container}>
+        <div className={style.content}>
+          <Form name="welcomeTextForm" form={form} autoComplete="off" onValuesChange={setParentText}>
+            <Form.Item shouldUpdate>
+              {({ getFieldValue }) => {
+                const maxWord = props.maxWord || 300;
+                return (
+                  <div className={style.welcomeWrap}>
+                    <Form.Item
+                      name="title"
+                      rules={[
+                        {
+                          validator: async (_, value: string) => {
+                            if (getFullLength(value) > maxWord) {
+                              return Promise.reject(
+                                new Error(`不超过${maxWord}字符，每个汉字计2字符`),
+                              );
+                            }
+                            return Promise.resolve();
+                          },
+                        },
+                      ]}
+                    >
+                      <Input.TextArea
+                        className={style.textArea}
+                        placeholder="请输入内容"
+                        maxLength={maxWord}
+                        autoSize={{ maxRows: 3 }}
+                        bordered={false}
+                      />
+                    </Form.Item>
+                    <span className={style.countNum}>
+                      {getFullLength(getFieldValue('title') || '')}/{maxWord}
+                    </span>
+                  </div>
+                );
+              }}
+            </Form.Item>
+          </Form>
+        </div>
+        <Picker
+          style={emojiStyle}
+          showPreview={false}
+          showSkinTones={false}
+          onSelect={addEmoji}
+          native
+          i18n={emojiI18n}
+          className="emoji-staff-upload"
+        />
+        <div className={style.top}>
+          <div className={style.tags}>
+            {tags.map((item) => {
+              return (
+                <div className={style.tag} onClick={item.handleClick} key={item.key}>
+                  {item.text}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  });
+  
+  export default UploadTxt;
+  
+  ```
 
+  
 
+
 
+```
+
+```
 
 
 
