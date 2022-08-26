@@ -15,12 +15,6 @@ react是ui层解决方案, redux管理数据流, redux-saga处理异步数据
 
 ![image-20220708085622964](/Users/xufei/Library/Application Support/typora-user-images/image-20220708085622964.png)
 
-
-
-
-
-
-
 ## Redux
 
 ![image-20220708104655804](/Users/xufei/Library/Application Support/typora-user-images/image-20220708104655804.png)
@@ -245,11 +239,41 @@ Umi 在 `.umirc.ts`[配置较简单时] 或 `config/config.ts`[配置较复杂�
 
 约定 `src/app.tsx` 为运行时配置。可以做一些路由动态修改，覆写render做一些渲染前的权限校验等等
 
-
-
 ### 配置式路由
 
 Umi作为单页面应用, 页面地址的跳转本质是不同组件的切换, 不会重新请求服务获取HTML[ 只在应用初始化时加载一次 ]
+
+**极客云配置实践**
+
+```jsx
+//配置员工管理菜单路由-任务中心组件子路由
+const routes: FRoute[] = [
+  {
+    path: '/',
+    component: '../layouts/BasicLayout',
+    routes: [
+       {
+        name: 'staff.manage',
+        path: '/staff',
+        routes: [
+          {
+            name: 'missionCenter',
+            path: '/staff/missionCenter',
+            component: './Staff/MissionCenter',
+          },
+          {
+            name: 'missionCenterTaskCreator',
+            path: '/staff/missionCenter/missionCreator',
+            component:  './Staff/MissionCenter/MissionCreator',
+            hideInMenu: true,
+          },
+          {
+            path: '*',
+            redirect: '/staff/MissionCenter',
+          },
+        ],
+      },]
+```
 
 **配置路由**
 

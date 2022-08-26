@@ -34,7 +34,7 @@ ref 对象内容发生变化时，`useRef` 并不会通知。变更 `.current` �
 
 > [文章链接](https://juejin.cn/post/6858276396968951822)
 >
-> 后续文章未读[在实际业务中如何灵活运用受控组件与非受控组件](https://zhuanlan.zhihu.com/p/37579677)
+> [在实际业务中如何灵活运用受控组件与非受控组件](https://zhuanlan.zhihu.com/p/37579677)
 
 #### 引子
 
