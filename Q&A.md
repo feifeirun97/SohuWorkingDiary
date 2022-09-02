@@ -452,348 +452,59 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 //因此，始终使用唯一标识符作为从项目数组呈现的组件的键。
 ```
 
+> antd表单组件校验抖动？
+
+```jsx
+
+```
 
 
-#### Todo1
 
-+ 员工群发记录骨架品
-+ Ref
 
-**Todo List**
+
+
+
+**任务中心Todo List**
 
 + 表情触发优化    //点击可拖拽元素外隐藏选中框
-
 + 时间选择器可以引入range常量
-
 + 边距30
-
 + 任务内容url正则匹配
 
-  ```
-  import { getFullLength } from '@/utils/utils.string';
-  import type { FormInstance } from 'antd';
-  import { Form, Input } from 'antd';
-  import { Picker } from 'emoji-mart';
-  import 'emoji-mart/css/emoji-mart.css';
-  import { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react';
-  import type { WelcomeTextPropsType } from './type';
-  import style from './index.less';
-  import { debounce } from 'lodash';
-  export interface WelcomeTextRef {
-    welcomeTextForm: FormInstance<{ title: string }>;
-  }
-  const UploadTxt = forwardRef((props: WelcomeTextPropsType, ref) => {
-    const { onChange, initText, showTagKeys } = props;
-    const [showEmoji, setShowEmojiMart] = useState(false);
-    const [form] = Form.useForm();
-  
-    useEffect(() => {
-      const initialValues = {
-        title: JSON.stringify(initText) == '{}' ? '' : initText,
-      };
-      form.setFieldsValue(initialValues);
-    }, [initText, form]);
-  
-    useImperativeHandle(ref, () => ({
-      welcomeTextForm: form,
-    }));
-  
-    const changeEmojiMartStatus = () => {
-      // 显示emoji组件
-      setShowEmojiMart(!showEmoji);
-    };
-  
-    const getTitle = () => {
-      return form.getFieldValue('title') || '';
-    };
-  
-    const setParentText = debounce(() => onChange?.(getTitle()), 300);
-  
-    const addSomeText = (t: string) => {
-      // 获取当前值,然后加上emoji，然后设置该值
-      const title = getTitle();
-      const initialValues = {
-        title: `${title}${t}`, // TODO: 浏览器输入框，输入emoji表情时光标位置不太美观
-      };
-      form.setFieldsValue(initialValues);
-      form.validateFields();
-      setParentText();
-    };
-  
-    const addEmoji = (e: { native: string }) => {
-      addSomeText(e.native);
-    };
-  
-    const addEmployeeName = () => {
-      addSomeText('#员工姓名#');
-    };
-  
-    const addNickName = () => {
-      addSomeText('#客户昵称#');
-    };
-  
-    let tags = [
-      {
-        key: 'emoji',
-        text: '表情',
-        handleClick: changeEmojiMartStatus,
-      },
-      {
-        key: 'name',
-        text: '员工姓名',
-        handleClick: addEmployeeName,
-      },
-      {
-        key: 'nickName',
-        text: '客户昵称',
-        handleClick: addNickName,
-      },
-    ];
-    if (showTagKeys) {
-      tags = tags.filter((item) => showTagKeys.includes(item.key));
-    }
-  
-    const emojiStyle = useMemo(() => {
-      return {
-        position: 'absolute',
-        bottom: '140px',
-        left: '-12px',
-        zIndex: showEmoji ? '100' : '-1000',
-        opacity: showEmoji ? 1 : 0,
-      };
-    }, [showEmoji]);
-  
-    const emojiI18n = {
-      search: '搜索',
-      clear: '清除',
-      notfound: '未找到',
-      categories: {
-        search: '搜索结果',
-        recent: '近期使用',
-        smileys: '笑脸 & 表情',
-        people: '人物',
-        nature: '动物 & 自然',
-        foods: '食物 & 饮料',
-        activity: '运动',
-        places: '旅行 & 地点',
-        objects: '符号',
-        symbols: '象形',
-        flags: '旗帜',
-        custom: '自定义',
-      },
-      categorieslabel: 'Emoji 类别',
-    };
-  
-    useEffect(() => {
-      document.body.addEventListener('click', (e: any) => {
-        const emojiNode = document.querySelector('.emoji-mart');
-        console.log(document.querySelector('.emoji-mart'));
-  
-        if (emojiNode?.contains(e.target.className) && showEmoji) {
-          setShowEmojiMart(false);
-        }
-        // alert('click outside');
-      });
-    }, []);
-  
-    return (
-      <div className={style.container}>
-        <div className={style.content}>
-          <Form name="welcomeTextForm" form={form} autoComplete="off" onValuesChange={setParentText}>
-            <Form.Item shouldUpdate>
-              {({ getFieldValue }) => {
-                const maxWord = props.maxWord || 300;
-                return (
-                  <div className={style.welcomeWrap}>
-                    <Form.Item
-                      name="title"
-                      rules={[
-                        {
-                          validator: async (_, value: string) => {
-                            if (getFullLength(value) > maxWord) {
-                              return Promise.reject(
-                                new Error(`不超过${maxWord}字符，每个汉字计2字符`),
-                              );
-                            }
-                            return Promise.resolve();
-                          },
-                        },
-                      ]}
-                    >
-                      <Input.TextArea
-                        className={style.textArea}
-                        placeholder="请输入内容"
-                        maxLength={maxWord}
-                        autoSize={{ maxRows: 3 }}
-                        bordered={false}
-                      />
-                    </Form.Item>
-                    <span className={style.countNum}>
-                      {getFullLength(getFieldValue('title') || '')}/{maxWord}
-                    </span>
-                  </div>
-                );
-              }}
-            </Form.Item>
-          </Form>
-        </div>
-        <Picker
-          style={emojiStyle}
-          showPreview={false}
-          showSkinTones={false}
-          onSelect={addEmoji}
-          native
-          i18n={emojiI18n}
-          className="emoji-staff-upload"
-        />
-        <div className={style.top}>
-          <div className={style.tags}>
-            {tags.map((item) => {
-              return (
-                <div className={style.tag} onClick={item.handleClick} key={item.key}>
-                  {item.text}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    );
-  });
-  
-  export default UploadTxt;
-  
-  ```
+**积分后台Todo List**
 
-  
-
-+ 
-
-
-
-```
-http://scrm-sv.focus-test2.cn/manage/task/list?realtorIds=170&realtorIds=196&realtorIds=198&pageNo=1&pageSize=10
-
-http://scrm-sv.focus-test2.cn/manage/task/list?realtorIds=170,196,198&pageNo=1&pageSize=10
-```
-
-```
-{
-    "code": 200,
-    "message": "success",
-    "data": [
-        {
-            "children": [
-                {
-                    "id": 170,
-                    "title": "丁进松",
-                    "type": 2,
-                    "key": "realtor_170"
-                },
-                {
-                    "id": 196,
-                    "title": "潘林",
-                    "type": 2,
-                    "key": "realtor_196"
-                },
-                {
-                    "id": 198,
-                    "title": "武云峰",
-                    "type": 2,
-                    "key": "realtor_198"
-                },
-                {
-                    "id": 199,
-                    "title": "贾书棋",
-                    "type": 2,
-                    "key": "realtor_199"
-                },
-                {
-                    "id": 203,
-                    "title": "马银增马银增马银增马银增马银增马银增马银",
-                    "type": 2,
-                    "key": "realtor_203"
-                },
-                {
-                    "id": 204,
-                    "title": "王爽",
-                    "type": 2,
-                    "key": "realtor_204"
-                },
-                {
-                    "id": 206,
-                    "title": "杨文",
-                    "type": 2,
-                    "key": "realtor_206"
-                },
-                {
-                    "id": 349,
-                    "title": "俊逸",
-                    "type": 2,
-                    "key": "realtor_349"
-                },
-                {
-                    "id": 353,
-                    "title": "测试1049呀",
-                    "type": 2,
-                    "key": "realtor_353"
-                },
-                {
-                    "id": 354,
-                    "title": "贺萌编辑1最长的名称测试哈哈哈嗯哈哈哈啊",
-                    "type": 2,
-                    "key": "realtor_354"
-                },
-                {
-                    "id": 356,
-                    "title": "语嫣",
-                    "type": 2,
-                    "key": "realtor_356"
-                },
-                {
-                    "id": 363,
-                    "title": "刘冰",
-                    "type": 2,
-                    "key": "realtor_363"
-                },
-                {
-                    "id": 366,
-                    "title": "向昕",
-                    "type": 2,
-                    "key": "realtor_366"
-                },
-                {
-                    "id": 367,
-                    "title": "贾红杰",
-                    "type": 2,
-                    "key": "realtor_367"
-                },
-                {
-                    "id": 419,
-                    "title": "贺萌测试测试和啥几点",
-                    "type": 2,
-                    "key": "realtor_419"
-                },
-                {
-                    "id": 423,
-                    "title": "崔鹤文",
-                    "type": 2,
-                    "key": "realtor_423"
-                }
-            ],
-            "id": 6,
-            "title": "企微-焦点新干线",
-            "type": 1,
-            "key": "department_6"
-        }
-    ]
-}
-```
++ 输入框只能输入整数
 
 麻烦您最后确认一下，确认没问题我就让我家里吧护照户口本原件寄来北京了
 
 + 在京申请保留名额，不影响后期上海提车**上沪牌**？
 + “整个过程不收取任何费用，就海关录入费30元，后期等您买车的时候我们才根据您购买车型收取相关代理费。”
+
+
+
+本周总结
+
+营销内容支持-完成开发
+
+营销内容支持-完成测试跟进及bug
+
+积分体系后台-完成积分列表接口走通，完成创建积分任务UI布局
+
+校招答辩-完成第一次工作汇报
+
+前端技术分享-《浅谈React、Vue中的Diff算法》
+
+前端学习-学习前端渲染中Cpu瓶颈和Io瓶颈涉及到的场景
+
+
+
+下周任务
+
+积分体系后台-完成创建积分任务接口走通
+
+积分体系后台-完成人中中心，互动雷达板块新增积分任务
+
+前端学习-深入学习React框架中Reconciler中Fiber架构
 
 
 
