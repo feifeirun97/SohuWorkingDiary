@@ -455,10 +455,15 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 > antd表单组件校验抖动？
 
 ```jsx
-
+//自带的无法控制
+//源码中用了两个动画延迟控制
 ```
 
+> 一个表达式判断undefined 和 null？
 
+```jsx
+//
+```
 
 
 
@@ -474,6 +479,7 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 **积分后台Todo List**
 
 + 输入框只能输入整数
++ 加分规则两行
 
 麻烦您最后确认一下，确认没问题我就让我家里吧护照户口本原件寄来北京了
 
@@ -482,9 +488,9 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 
 
-本周总结
+需求开发
 
-营销内容支持-完成开发
+积分体系后台-完成
 
 营销内容支持-完成测试跟进及bug
 
@@ -513,3 +519,29 @@ FastStone转动图
 ProcessOn流程图
 
 CodeSnap贴代码
+
+
+
+```
+curl 'http://scrm-sv.focus-test2.cn/manage/integral/task/create' \
+  -H 'Accept: application/json' \
+  -H 'Accept-Language: zh,en;q=0.9,zh-CN;q=0.8' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'Cookie: sc_dm=Zm9jdXMtdGVzdDIuY24=; sc_info=MTU2MTE3MzgxMDd8NjU2MDQ2NDY1fDY1NTgzMzI4M3wxNjYxOTEwMjAyMjA2; sc_sign=J/B8C/sJGCCFHaOqfP+9me0sODhjRIxwwRu98l2AskX8xejWxY7VXGiP3B6DTLSWBdXb8wfPcTZnZ4SASZG7QYs5yRHRTg8jqhvE1+usW1CL0b8C5FhN9fEZrd2DqrP2hOvdUUhq6dRsWh49aMszZ2TzcMfZuDJfVIPvudZNKeKIHWu8wL3+wjf9RLo11oCp8UkI7oIbEHaESOsPx3GomQckoYPfH3CZT1Dsnmtxw9pmwHSWuxG9j2gI1nsP+4ftMlotqqdcPVYQiRxo+q3p1eWc2MTxMI7XlUhCFX9Tbo7p+DttBL3OVp0LoQLwuvFOoikCABqY9eZ+Cr7SEj+tRg==' \
+  -H 'Origin: http://test.focus-test2.cn:8000' \
+  -H 'Referer: http://test.focus-test2.cn:8000/' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
+  --data-raw '{"name":"阿斯顿测试","type":1,"rule":{"customerCount":1,"integral":10},"timeLimit":true,"startTime":1663430400000,"endTime":1663516799999}' \
+  --compressed \
+  --insecure
+```
+
+
+
+
+
+```
+
+```
+
