@@ -478,8 +478,8 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 **积分后台Todo List**
 
-+ 输入框只能输入整数
-+ 加分规则两行
++ 监听visible变化
++ 
 
 麻烦您最后确认一下，确认没问题我就让我家里吧护照户口本原件寄来北京了
 
@@ -490,27 +490,21 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 需求开发
 
-积分体系后台-完成
+积分体系后台-对接后端完成积分任务删除接口调通，积分任务创建接口联调。
 
-营销内容支持-完成测试跟进及bug
+积分体系后台-完成积分任务创建UI布局，表单校验
 
-积分体系后台-完成积分列表接口走通，完成创建积分任务UI布局
+焦点组件库-使用pro-drawer组件时遇到需要在父组件监听visible状态，与组件负责人沟通得到解决方案
 
-校招答辩-完成第一次工作汇报
-
-前端技术分享-《浅谈React、Vue中的Diff算法》
-
-前端学习-学习前端渲染中Cpu瓶颈和Io瓶颈涉及到的场景
+React框架深入学习-学习React Fiber中的代数效应概念
 
 
 
-下周任务
+积分体系后台-完成获取积分列表翻页，条数控制
 
-积分体系后台-完成创建积分任务接口走通
+积分体系后台-完成积分列表表格编辑操作，调通更新积分任务接口
 
-积分体系后台-完成人中中心，互动雷达板块新增积分任务
-
-前端学习-深入学习React框架中Reconciler中Fiber架构
+React框架深入学习-学习代数效应在React架构中的应用
 
 
 
@@ -522,26 +516,9 @@ CodeSnap贴代码
 
 
 
-```
-curl 'http://scrm-sv.focus-test2.cn/manage/integral/task/create' \
-  -H 'Accept: application/json' \
-  -H 'Accept-Language: zh,en;q=0.9,zh-CN;q=0.8' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Type: application/json;charset=UTF-8' \
-  -H 'Cookie: sc_dm=Zm9jdXMtdGVzdDIuY24=; sc_info=MTU2MTE3MzgxMDd8NjU2MDQ2NDY1fDY1NTgzMzI4M3wxNjYxOTEwMjAyMjA2; sc_sign=J/B8C/sJGCCFHaOqfP+9me0sODhjRIxwwRu98l2AskX8xejWxY7VXGiP3B6DTLSWBdXb8wfPcTZnZ4SASZG7QYs5yRHRTg8jqhvE1+usW1CL0b8C5FhN9fEZrd2DqrP2hOvdUUhq6dRsWh49aMszZ2TzcMfZuDJfVIPvudZNKeKIHWu8wL3+wjf9RLo11oCp8UkI7oIbEHaESOsPx3GomQckoYPfH3CZT1Dsnmtxw9pmwHSWuxG9j2gI1nsP+4ftMlotqqdcPVYQiRxo+q3p1eWc2MTxMI7XlUhCFX9Tbo7p+DttBL3OVp0LoQLwuvFOoikCABqY9eZ+Cr7SEj+tRg==' \
-  -H 'Origin: http://test.focus-test2.cn:8000' \
-  -H 'Referer: http://test.focus-test2.cn:8000/' \
-  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
-  --data-raw '{"name":"阿斯顿测试","type":1,"rule":{"customerCount":1,"integral":10},"timeLimit":true,"startTime":1663430400000,"endTime":1663516799999}' \
-  --compressed \
-  --insecure
-```
 
 
 
 
 
-```
-
-```
 

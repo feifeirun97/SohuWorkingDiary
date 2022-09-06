@@ -154,7 +154,7 @@ Class组件时期，可以通过`this.setState`、`this.forceUpdate`、`ReactDOM
 
 > [React官方](https://zh-hans.reactjs.org/docs/codebase-overview.html#renderers)对**Renderer**的解释
 
-由于React的跨平台支持，所有不同平台有不同Renderer。前端最熟悉的说负责在浏览器环境渲染的Renderer————ReactCDOM
+由于React的跨平台支持，所有不同平台有不同Renderer。前端最熟悉的说负责在浏览器环境渲染的Renderer————ReactDOM
 
 除此之外还有:
 
