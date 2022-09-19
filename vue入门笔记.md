@@ -906,11 +906,14 @@ example1.items = example1.items.filter(function (item) {
 
 ## 组件基础
 
-### 基础
+### 使用
 
 组件是可复用的 Vue 实例，所以它们与 `new Vue` 接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。**仅有的例外是像 `el` 这样根实例特有的选项。**
 
+通过data函数返回，维护一个闭包
+
 ```vue
+<script>
 // 定义一个名为 button-counter 的新组件
 Vue.component('button-counter', {
   data: function () {
@@ -919,12 +922,146 @@ Vue.component('button-counter', {
     }
   },
   template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-})
+})font
 
 <div id="components-demo">
   <button-counter></button-counter>
 </div>
 
 new Vue({ el: '#components-demo' })
+</script>
+```
+
+### 传递数据
+
+通过props传递
+
+```js
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+
+new Vue({
+  el: '#blog-post-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ]
+  }
+})
+
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+></blog-post>
+
+```
+
+### 监听子组件事件
+
+父级组件可以通过 `v-on` 监听子组件实例的任意事件
+
+```vue
+<blog-post
+  ...
+  v-on:enlarge-text="postFontSize += 0.1"
+></blog-post>
+```
+
+子组件可以通过调用内建的`$emit`并传入事件名称来触发一个事件
+
+```vue
+<button v-on:click="$emit('enlarge-text')">
+  Enlarge text
+</button>
+```
+
+#### 使用事件抛出一个值
+
+`$emit`支持第二个参数
+
+```vue
+<button v-on:click="$emit('enlarge-text', 0.1)">
+  Enlarge text
+</button>
+```
+
+父级组件可以`$event`访问到被抛出的这个值
+
+```vue
+<template>
+	<div>
+    <blog-post
+      ...
+      v-on:enlarge-text="postFontSize += $event"
+    ></blog-post>
+    
+    <blog-post
+   	 ...
+      v-on:enlarge-text="onEnlargeText"
+  	></blog-post>
+  </div>
+</template>
+
+<script>
+  methods: {
+    onEnlargeText: function (enlargeAmount) {
+      this.postFontSize += enlargeAmount
+    }
+  }
+</script>
+```
+
+#### 在组件上使用v-model
+
+自定义事件也可以用于创建支持 `v-model` 的自定义输入组件。
+
+```vue
+<input v-model="searchText">
+<!--等价于-->
+<input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event.target.value"
+>
+<custom-input v-model="searchText"></custom-input>
+<!--例子-->
+<script>
+  Vue.component('custom-input', {
+  props: ['value'],
+  template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+})
+</script>
+```
+
+### 插槽
+
+`<slot>`元素
+
+```vue
+Vue.component('alert-box', {
+  template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+})
+```
+
+### 动态组件
+
+动态切换类不需要根据state switch或者三元表达式，直接is判断
+
+```vue
+ <component v-bind:is="currentTabComponent" class="tab"></component>
 ```
 
