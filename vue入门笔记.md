@@ -904,13 +904,19 @@ example1.items = example1.items.filter(function (item) {
 <input v-model.trim="msg">
 ```
 
-## 组件基础
+## 组件
 
-### 使用
+### Vue.component
 
 组件是可复用的 Vue 实例，所以它们与 `new Vue` 接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。**仅有的例外是像 `el` 这样根实例特有的选项。**
 
-通过data函数返回，维护一个闭包
+#### 组件名
+
+`Vue.component('my-component-name', { /* ... */ })`推荐全小写&连字符 or 首字母大写
+
+#### data
+
+组件通过data函数返回，维护一个闭包
 
 ```vue
 <script>
@@ -932,15 +938,21 @@ new Vue({ el: '#components-demo' })
 </script>
 ```
 
-### 传递数据
+### Prop传递数据
 
-通过props传递
+⚠️即使传入的是静态数字or布尔值，仍然需要`v-bind:test='42' / 'false' / '[1,2,3]'`来告诉vue这是一个JS表达式而不是字符串
 
 ```js
 Vue.component('blog-post', {
   props: ['title'],
   template: '<h3>{{ title }}</h3>'
 })
+
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+></blog-post>
 
 new Vue({
   el: '#blog-post-demo',
@@ -952,13 +964,6 @@ new Vue({
     ]
   }
 })
-
-<blog-post
-  v-for="post in posts"
-  v-bind:key="post.id"
-  v-bind:title="post.title"
-></blog-post>
-
 ```
 
 ### 监听子组件事件
@@ -1044,17 +1049,72 @@ new Vue({
 
 ### 插槽
 
-`<slot>`元素
+#### 插槽内容
+
+`<slot>`元素,类似react中的 children
+
+如果父组件传东西了，`slot`内的默认内容会被全部覆盖
 
 ```vue
 Vue.component('alert-box', {
   template: `
     <div class="demo-alert-box">
       <strong>Error!</strong>
-      <slot></slot>
+      <slot>defaultContent</slot>
     </div>
   `
 })
+<alert-box url="/profile">
+  <!-- 添加一个 Font Awesome 图标 -->
+  <span class="fa fa-user"></span>
+  Your Profile {{name}}
+</alert-box>
+```
+
+#### 具名插槽
+
+我们需要多个插槽时，可以给`<slot>`元素加一个name属性。不带name也会带有隐含的名字'default'
+
+⚠️`v-slot`只能添加在 `<template>` 上, **除非只有默认插槽**
+
+```vue
+<!--子组件-->
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+<!--父组件-->
+<base-layout>
+  <template v-slot:header>
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template v-slot:footer>
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+```
+
+#### 插槽作用域
+
+绑定在 `<slot>` 元素上的 attribute 被称为**插槽 prop**。现在在父级作用域中，我们可以使用带值的 `v-slot` 来定义我们提供的插槽 prop 的名字：
+
+```vue
+<span>
+  <slot  v-slot:default="slotProps">">
+    {{ slotProps.lastName }}
+  </slot>
+</span>
 ```
 
 ### 动态组件
@@ -1065,3 +1125,61 @@ Vue.component('alert-box', {
  <component v-bind:is="currentTabComponent" class="tab"></component>
 ```
 
+#### keep-alive
+
+动态切换并保持缓存
+
+```vue
+<!-- 失活的组件将会被缓存！-->
+<keep-alive>
+  <component v-bind:is="currentTabComponent"></component>
+</keep-alive>
+```
+
+### 自定义事件
+
+不同于组件和 prop，事件名不会被用作一个 JavaScript 变量名或 property 名，所以就没有理由使用 camelCase 或 PascalCase 了。并且 `v-on` 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 `v-on:myEvent` 将会变成 `v-on:myevent`——导致 `myEvent` 不可能被监听到。
+
+```js
+//错误示范
+this.$emit('myEvent')
+//正确
+this.$emit('myevent')
+```
+
+### 处理边界情况
+
+#### 访问根实例
+
+`this.$root`
+
+```js
+// Vue 根实例
+new Vue({
+  data: {
+    foo: 1
+  },
+  computed: {
+    bar: function () { /* ... */ }
+  },
+  methods: {
+    baz: function () { /* ... */ }
+  }
+})
+
+// 获取根组件的数据
+this.$root.foo
+
+// 写入根组件的数据
+this.$root.foo = 2
+
+// 访问根组件的计算属性
+this.$root.bar
+
+// 调用根组件的方法
+this.$root.baz()
+```
+
+#### 访问父组件实例
+
+`this.$parent`
