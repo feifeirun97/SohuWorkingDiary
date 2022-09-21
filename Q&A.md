@@ -480,6 +480,42 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 ```
 
+## Week12
+
+> H5配置开发
+
+```js
+//App.vue把tryLogin()注释掉->可以在浏览器调试
+//store-modules-useData.ts->手动设置token跳过企微的登陆
+//访问http://127.0.0.1:8088/pages/datas/integration/index调试
+getters: {
+  token: (state: StateType) => {
+    return (
+      state.token ||
+      Cookies.get('token') ||
+      'MXw5fDZ8MTcwfDE2NjM5MDI0ODEwOTl8azJLR21zTnRUMWZIZnNWZzFkZ25Kd0NONmhUSVF0WEZaZTRGcUdNdUV5ZmdxU29qK1dzOEpKTGRtNGVTYnZMNW96d0dteExPRmxDZXBPSUNpa3NaQlZjMWF3YVV0QXh1dWtSOTJtSzhUVVR1SUJYZUd2YlpYc1dWN0dxYWlmd2dQVGM3WWMzMCswMVlNc3VQM05zY1FER3BlbHVGd1pyT3laOGFLRHlsdVJvPQ'
+    )
+  }
+}
+```
+
+> H5代码规范
+
+```js
+//新建页面需要pages.josn配置 & pages/新建文件夹
+//公共组件放在components文件进行，以u-xxx命名，自动import
+```
+
+> H5使用ES6链式判断报错
+
+```js
+
+```
+
+> H5的Ts支持
+
+
+
 
 
 **任务中心Todo List**
@@ -507,23 +543,19 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 需求开发
 
-积分体系后台-测试跟进及bug修复
+积分排行-开始积分体系H5积分排行开发，完成职业顾问积分概览、员工排行UI布局&借口联调
 
-积分体系H5-开始积分体系H5开发，熟悉了解H5项目结构 & 调试方法
+积分排行-学习H5端通过scroll-view配合scrolltolower搭配的方式，实现滚动下滑时请求补充列表
 
-Vue项目-学习Vue2中的v-model表单输入绑定&修饰符、组件Vue.component方法、组件数据传递Props
+Vant组件库-学习使用Vant2移动端组件库中divider，icon，calendar等组件的使用规范
 
-
-
-
-
-下周安排
-
-Vue项目-学习Vue2中的监听触发子组件事件&子组件抛值、插槽slot的使用&作用域
+Vue框架-学习Vue2中的v-on监听子组件事件、子组件$emit方法抛值、在组件上使用v-model
 
 
 
+Vue框架-学习Vue2插槽slot、具名插槽、插槽作用域等
 
+积分排行-完成积分排行职业顾问积分详情页的布局 & 接口联调、封装时间选择组件
 
 
 
