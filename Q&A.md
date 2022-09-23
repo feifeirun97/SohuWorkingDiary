@@ -516,6 +516,14 @@ getters: {
 //grid-column-end: 4;
 ```
 
+> 如何实现flex不溢出？
+
+```js
+//flex:1 overflow:hidden
+```
+
+
+
 **任务中心Todo List**
 
 + 表情触发优化    //点击可拖拽元素外隐藏选中框
@@ -571,9 +579,7 @@ Vue项目-第一次进行Vue项目开发，学习Vue框架中的V-model表单绑
 
 
 
-件处理等
 
-Vant组件库-学习使用Vant2移动端组件库中divider、icon、calender、popup等组件的使用
 
 
 
