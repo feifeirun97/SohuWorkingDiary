@@ -506,17 +506,15 @@ getters: {
 //公共组件放在components文件进行，以u-xxx命名，自动import
 ```
 
-> H5使用ES6链式判断报错
+> Grid布局实现？
+
+![image-20220922112600535](/Users/xufei/Library/Application Support/typora-user-images/image-20220922112600535.png)
 
 ```js
-
+//对想要占多行的块元素增加
+//grid-column-start: 2;
+//grid-column-end: 4;
 ```
-
-> H5的Ts支持
-
-
-
-
 
 **任务中心Todo List**
 
@@ -543,19 +541,19 @@ getters: {
 
 需求开发
 
-积分排行-开始积分体系H5积分排行开发，完成职业顾问积分概览、员工排行UI布局&借口联调
+积分排行-积分体系H5时间选择器组件布局&开发
 
-积分排行-学习H5端通过scroll-view配合scrolltolower搭配的方式，实现滚动下滑时请求补充列表
+积分排行-开发中学习Vue中封装组件，传递props和抛出状态
 
-Vant组件库-学习使用Vant2移动端组件库中divider，icon，calendar等组件的使用规范
+Vant组件库-学习使用Vant2移动端组件库中cell，popup等组件的使用规范
 
-Vue框架-学习Vue2中的v-on监听子组件事件、子组件$emit方法抛值、在组件上使用v-model
+Vue框架-学习Vue2插槽slot、具名插槽、插槽作用域等
 
 
 
 Vue框架-学习Vue2插槽slot、具名插槽、插槽作用域等
 
-积分排行-完成积分排行职业顾问积分详情页的布局 & 接口联调、封装时间选择组件
+积分体系-完成体系H5时间选择器的封装，完成积分排行开发，对照UI稿和PRD提高提测质量
 
 
 
@@ -563,25 +561,29 @@ Vue框架-学习Vue2插槽slot、具名插槽、插槽作用域等
 
 本周总结
 
-积分体系后台-积分看板、任务中心新增积分配置、互动雷达新增积分配置、积分任务配置中心开发完成。
+积分体系H5-完成积分职业顾问积分概览、员工排行UI布局 & 接口联调
 
-积分体系后台提测-阻塞性Bug修改 & UI细节修改
+积分体系H5-下周提测，对照PRD和UI提高提测质量
 
-积分体系H5-了解H5项目结构 & Host配置等，准备下周开发
+H5公共组件-根据UI和PRD封装了一个时间选择组件
 
-Vue学习-学习Vue2中的动态参数、指令缩写、计算属性和侦听器
+Vue项目-第一次进行Vue项目开发，学习Vue框架中的V-model表单绑定，Vue.component方法，组件Props传值抛值，条件渲染，列表渲染，v-on事
 
-Echarts学习-学习常用配置项和柱状图的使用
+
+
+件处理等
+
+Vant组件库-学习使用Vant2移动端组件库中divider、icon、calender、popup等组件的使用
 
 
 
 下周安排
 
-Vue项目-首次开发Vue项目，边学边做，争取快速掌握技术栈。下周重点学习Vue2中Class与Style的绑定 、条件渲染v-if & v-show、列表渲染v-for、事件处理、组件等
+积分体系H5-积分体系h5测试跟进及bug修复
 
-积分体系H5-完成积分体系h5的开发 & 联调
+积分体系后台，任务中心支持营销内容-之前为赶进度每个需求后只预留了一天修改阻塞性bug，下周修复整体bug和UI校对
 
-
+第二次校招答辩-周末准备ppt制作
 
 
 
@@ -604,8 +606,6 @@ FastStone转动图
 ProcessOn流程图
 
 CodeSnap贴代码
-
-
 
 
 
