@@ -1,10 +1,9 @@
-# 浅析React、Vue中的Diff算法
+# React、Vue中的Diff算法
 
-> 分享人：22届校招生许飞					
+> 分享人：许飞					
 >
 > 时间：2022/09/02
 >
-> 本文章不讲解vDom实现，mount挂载，以及render函数。只讨论三种diff算法。VNode类型不考虑component、functional-component、Fragment、Teleport。
 
 ## React-Diff
 

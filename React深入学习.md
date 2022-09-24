@@ -6,7 +6,7 @@
 
 ## React理念
 
-> 我们认为，React 是用 JavaScript 构建**快速响应**的大型 Web 应用程序的首选方式。它在 Facebook 和 Instagram 上表现优秀。 --React官网FocusSohu78!
+> 我们认为，React 是用 JavaScript 构建**快速响应**的大型 Web 应用程序的首选方式。它在 Facebook 和 Instagram 上表现优秀。 --React官网
 
 ### **制约场景**
 
