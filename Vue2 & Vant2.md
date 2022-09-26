@@ -898,7 +898,7 @@ example1.items = example1.items.filter(function (item) {
 
 `.trim`
 
-如果要自动过滤用户输入的首尾空白字符，可以给 `v-model` 添加 `trim` 修饰符
+如果要自动过滤用户输入的首尾空白字符，可以给 `v-model` 添加 `trim` 修饰符¸
 
 ```vue
 <input v-model.trim="msg">

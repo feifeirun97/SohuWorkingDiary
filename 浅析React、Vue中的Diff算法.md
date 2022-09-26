@@ -261,7 +261,7 @@ function reactDiff(prevChildren, nextChildren, parent) {
 
 这里是有可优化的空间的，接下来我们介绍`vue2.x`中的`diff`算法——`双端比较`，该算法解决了上述的问题
 
-## 二、Vue2.X Diff —— 双端比较
+## Vue2 Diff —— 双端比较
 
 所谓`双端比较`就是**新列表**和**旧列表**两个列表的头与尾互相对比，，在对比的过程中指针会逐渐向内靠拢，直到某一个列表的节点全部遍历过，对比停止。
 
@@ -666,6 +666,16 @@ function vue2Diff(prevChildren, nextChildren, parent) {
 
 ## 5.小结
 
+## 总结
+
++ ### react -diff
+
+![](/Users/xufei/Downloads/r3.png)
+
++ ### vue -diff双端算法
+
+  ![img](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2dea77f7267b406ca0dc8600096c4dc1~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)
+
 至此`双端比较`全部完成，以下是全部代码。
 
 ```js
@@ -742,17 +752,23 @@ function vue2diff(prevChildren, nextChildren, parent) {
 }
 ```
 
-## 总结
+#### 答疑 & 后续学习方向	
 
-+ ### react -diff
+> Q:Diff算法除了key外还有哪些因素进行新旧节点判断？
 
-![](/Users/xufei/Downloads/r3.png)
 
-+ ### vue -diff双端算法
 
-  ![img](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2dea77f7267b406ca0dc8600096c4dc1~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)
+> Q:为什么在React中在列表渲染中用不能用array index作为key值作为标识符？
 
-实际上真实的算法会复杂很多，
+
+
+> Q:React为了降低算法复杂程，对diff还做了哪些限制？
+
+
+
+
+
+
 
 
 
