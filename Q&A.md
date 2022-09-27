@@ -522,7 +522,20 @@ getters: {
 //flex:1 overflow:hidden
 ```
 
+## Week13
 
+> nginx路径，配置
+
+```js
+//获取token
+//关掉hosts和nginx - 企微R-token
+//配置token
+//constants
+//hosts
+//vim /etc/hosts
+//http://127.0.0.1:8088/pages/datas/integration/index
+
+```
 
 **任务中心Todo List**
 
@@ -531,17 +544,27 @@ getters: {
 + 任务内容url正则匹配
 + 数据导出无数据处理
 
+
+
+
+
 **积分后台Todo List**
 
-+ 
-+ 
++ 向上取整10有问题
++ 本周本月
 + 
 
-麻烦您最后确认一下，确认没问题我就让我家里吧护照户口本原件寄来北京了
++ 
 
-+ 在京申请保留名额，不影响后期上海提车**上沪牌**？
-+ “整个过程不收取任何费用，就海关录入费30元，后期等您买车的时候我们才根据您购买车型收取相关代理费。”
-+ r
+
+
+
+
+
+
+
+
+
 
 
 
@@ -549,19 +572,9 @@ getters: {
 
 需求开发
 
-积分排行-积分体系H5时间选择器组件布局&开发
-
-积分排行-开发中学习Vue中封装组件，传递props和抛出状态
-
-Vant组件库-学习使用Vant2移动端组件库中cell，popup等组件的使用规范
-
-Vue框架-学习Vue2插槽slot、具名插槽、插槽作用域等
-
-
-
-Vue框架-学习Vue2插槽slot、具名插槽、插槽作用域等
-
-积分体系-完成体系H5时间选择器的封装，完成积分排行开发，对照UI稿和PRD提高提测质量
+- 积分排行-积分体系H5测试跟进及bug修复。时间选择组件根据PRD和UI更改重新调整布局和逻辑
+- UI校对-任务中心新建任务页面UI整改
+- React框架-学习React源码的文件结构 & 调试方法
 
 
 
@@ -619,3 +632,20 @@ CodeSnap贴代码
 
 
 
+127.0.0.1 	test.focus-dev.cn
+127.0.0.1 	test.focus-test.cn
+127.0.0.1 	test.focus-dev1.cn
+127.0.0.1 	test.focus-test1.cn
+127.0.0.1 	test.focus-dev2.cn
+127.0.0.1 	test.focus-test2.cn
+127.0.0.1 	test.focus-dev3.cn
+127.0.0.1 	test.focus-test3.cn
+127.0.0.1 	test.focus-dev6.cn
+127.0.0.1 	test.focus-test6.cn
+127.0.0.1 	test.focus-dev7.cn
+127.0.0.1 	test.focus-test7.cn
+127.0.0.1 	test.focus-dev9.cn
+127.0.0.1 	test.focus-test9.cn
+127.0.0.1 	test.focus-dev8.cn
+127.0.0.1 	test.focus-test8.cn
+127.0.0.1       qw-h5.focus-test.cn
