@@ -537,28 +537,29 @@ getters: {
 
 ```
 
+> pro-components发版
+
+```js
+//首先在changelog.md新增feature
+//🎸  @focus/pro-upload@1.1.1: maxSize 配置为 0 时，不限制图片体积
+//其次找到改的组件 package.json 版本号次版本+1
+//npm run publish
+```
+
+
+
+
+
 **任务中心Todo List**
 
 + 表情触发优化    //点击可拖拽元素外隐藏选中框
-+ 边距30
 + 任务内容url正则匹配
 + 
 
-
-
-**all**
-
-+ 关闭按钮：hover
-      color: #40a9ff;
-
-   border-color: #40a9ff;
-
-
-
 **积分后台Todo List**
 
-+ 
-+ 本周本月
+
+
 + 
 
 + 
@@ -592,6 +593,28 @@ getters: {
 + UI校对-对任务中心剩余页面完成UI校对工作
 
 + 积分体系H5-测试跟进及bug修复
+
+  
+
++ 时间选择器-根据新UI和PRD完成开发。今日、本周、本月删除，同时自定义增加未选择状态
+
++ UI校对-对任务中心抽屉页关闭悬浮按钮、数据导出按钮新增悬浮变色状态。
+
++ Pro-components组件维护-根据UI规范对pro-filter-table的重置按钮做ui整改
+
++ 积分体系H5-测试跟进及bug修复。
+
+  
+
+  
+
++ 移动端1px问题-下划线1px在移动端展示出现粗细不一致问题，明天着手解决
+
++ 积分体系H5-测试跟进及bug修复
+
++ UI校对-完成对积分体系前台后台整体UI校对
+
+  
 
   
 
