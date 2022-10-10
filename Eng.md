@@ -1,4 +1,4 @@
-## Week2
+## Reading
 
 ### 消费升级
 
@@ -20,7 +20,7 @@
 | infant         |                | 婴儿，婴儿的           |      |
 | commodity      |                | 商品，可贵品质         |      |
 | whereas        |                | 然而                   |      |
-|                |                |                        |      |
+| prime          |                | 首要的，重要的         |      |
 
 
 
@@ -33,3 +33,54 @@
 > Dont panic. / No need to panic.
 
 不必惊慌
+
+
+
+
+
+
+
+## Listening
+
+| 单词          | 英标       | 中文             |
+| ------------- | ---------- | ---------------- |
+| garage        | ɡəˈrɑː(d)ʒ | 车库，加油站     |
+| steak         | steɪk      | 牛排             |
+| comprehension |            | 理解             |
+| engage        |            | 从事，参与，聘请 |
+| episode       | ˈɛpəˌsoʊd  | 剧集，插曲       |
+| intersection  |            | 交点，相交       |
+| resume        | ˈrɛzəˌmeɪ  | 简历，摘要       |
+|               |            |                  |
+|               |            |                  |
+|               |            |                  |
+|               |            |                  |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

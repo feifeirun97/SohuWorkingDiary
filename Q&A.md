@@ -17,11 +17,8 @@
 
 员工群发
 
-+ 素材库二三期差别很大
-
-  一个有预览，一个删除了
-
-  
++ 素材库按1.2.4的来
++ protipmodal 取消色值问题待确认
 
 
 
@@ -690,4 +687,4 @@ CodeSnap贴代码
 127.0.0.1 	test.focus-test9.cn
 127.0.0.1 	test.focus-dev8.cn
 127.0.0.1 	test.focus-test8.cn
-127.0.0.1       qw-h5.focus-test.cn
+127.0.0.1     qw-h5.focus-test.cn
