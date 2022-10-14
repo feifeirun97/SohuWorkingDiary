@@ -18,37 +18,26 @@
 员工群发
 
 + 素材库按1.2.4的来
-+ protipmodal 取消色值问题待确认
-
-
 
 ### 日常
 
 需求开发
 
-- 任务中心优化-任务模块多表单时出现卡顿问题，通过减少dom操作和监听事件优化拖动速度。
+- Rscode文档学习-学习rscode代码发布管理系统中本地dev，测试test，正式work环境的相关知识。
 
-- 极客云二期ui校对-全局样式修改，如重置按钮统一，tab标签页选中加粗，按钮hover统一等
+- 极客云集团版-参与需求评审，主要涉及选择员工传递字段不一致以及table编辑删除权限控制。传参需要尽量统一。
 
-- 极客云三期ui校对-对员工群发记录，企微活码ui校对
-
-  
-
-+ ui校对-二期和三期素材库改动大，部分需要重做，明日与产品和UI协商方案
-
-+ 微信公众号桥接页开发-与后端确认在哪个test分支开发，同时在h5项目新增空白页并做权限判断
-
-  
-
-  
++ 极客云ui-完成素材库删除弹框组件更换ui修改，完成渠道活码ui修改
 
 
 
-+ 极客云回测-提分体系国庆前上线并完成回测，清除所有bug和优化项，完成ui校对
++ 极客云集团版-等待后端完成cookie适配，以及自查所有接口是否适配集团版
++ Rscode文档学习-文档wiki时间太久2016年，部分参数，环境已经有所改变，需要对照现存Rscode平台部署流程以及控制台代码学习
 
-+ 任务中心优化项-极客云后台新建任务表情触发关闭优化
 
-  
+
+
+
 
 
 
@@ -353,6 +342,7 @@ blob()
 > 配置基坐路由？
 
 ```js
+//https://configuration-platform.focus.cn/#/detail/62afdc13bb7ac8858b2fcdb5
 //smartCase-test.json路由文件通过接口发过来
 //项目列表 - 极客云路由详情 - 测试环境 - 编辑 - 修改 - 备注 - 生成新文件
 //正式环境不要动
@@ -651,9 +641,33 @@ window.devicePixelRatio=物理像素 /CSS像素
 
 ```
 
+## Week14-15
 
+> axios设置了withCredentials为什么不携带cookie？
 
+```js
+//跨域不会携带cookie
+//request headers可以塞参数，但是不能直接修改cookie，会报错unsafe
+//只能先document.cookie='key=vaule'然后withCredentials
+//原因：极客云后台是因为后端配置了二级域名一致就不跨域，hosts。
+```
 
+> 如何判断是测试环境？
+
+```js
+//IsWorkEnv
+```
+
+> 集团版拷贝项目需要修改哪些东西？
+>
+
+```js
+//Serverconf
+//smart-qw => smart-group-qw
+//smartQw => smartGroupQw
+//nigix每个分支
+⚠️缺少集团版权限
+```
 
 
 
@@ -688,3 +702,54 @@ CodeSnap贴代码
 127.0.0.1 	test.focus-dev8.cn
 127.0.0.1 	test.focus-test8.cn
 127.0.0.1     qw-h5.focus-test.cn
+
+
+
+
+
+/manage/media/official/authUrl
+
+
+
+集团版智慧案场基座
+
+liangliang
+
+```
+curl 'http://sc-authority.focus-test.cn/group/backstage/product/list' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: zh,en;q=0.9,zh-CN;q=0.8' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: focus_pc_city_p=house; focus_city_p=house; focus_city_c=110100; focus_city_s=bj; gr_user_id=09fdd6c4-3359-4ee3-b588-311fdadc2cb5; ticket=YkthWmg5REFIdjE2RDZSTGPbsyILrR047uH1nOihZOFCfuDV7g8loc2eHDdrM1epXcURstcXOvc40wXFJCQVBg==; tscinf=ZmVpeHUyMTk3NTJAc29odS1pbmMuY29tfDEyNy4wLjAuMXwxNjY1NTU2MTA4ODU1fGZlaXh1MjE5NzUy; tscdig=f42f7ce09415d9f3888be71938fa4d62; tsrdig=AFzwSf50oZHSx7qCC3zCToyb/dfih7DehqBEbjcRMydfgc1xb92ZtoZ8/LuPizo6CBjDWvuNSZHm1s%2BlB7%2BPjoum0SV60krdhh1KBaLjWiFvuJXdF57U7epKWsYgvSk9j15XdxxQgGvjc86sNwpwQhBVbIKMGcEpCJU8tkU9S9g%3D; FOCUS_A_UDIG=EuCSyB/wdMlsYuUaRwBouPsR1KFXSfgI9sHt0Lf1S5oi9H/47Q8Vkq8PMURDi/MnPMv9y42Rc2RgS6NEfygn9MDYrSzZooblDYfRTjylosqWeHAa3T8BSGrzTfWPzXXaRCYWoAqkmJbbawyvKTvxNnrgf4bPa47bkfvxrVkmrvc=; sc_info=MTUyMTQzODE0Njl8NjY2Njc2NjQwfDY2NjY3NjIwOXwxNjY1NTU3MjU5MDUz; sc_sign=UQgUMkZiNZifaaiRrmJwgbv1dADCB2fzwbONthnsw835K+cVh2WRDlKS7X8s7rBzmuptoDdBjyGaWFdvid6Hu+ik4sYbyYO3hBKK5wxuEg8EkV0ljnDh1PlfTLj7C7RZGGtzQri7FSYcSwIMrITko5ZK/7yU0NKjpH7IMv5Bdo9NjRynRi2L4MOKk9ODTYQZ5wZWay0bNUzJXEG/NzlWLXTAtPI0+tm2ermzrnb+sQEwu7zbDcVZCI19H/T2t3V9ZIxquTrUlgAiGAYWhCeY2e/Zk9tSmv0kLo3GKP4wmJH4XI8R3HkeYPR9/Be1lPWjE2UNiZXRMbgZNig8TWUUrg==; sc_dm=Zm9jdXMtdGVzdC5jbg==; sc_group=1' \
+  -H 'Origin: http://test.focus-test.cn:8000' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: http://test.focus-test.cn:8000/' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
+  --compressed \
+  --insecure
+```
+
+![image-20221012145647945](/Users/xufei/Library/Application Support/typora-user-images/image-20221012145647945.png)
+
+
+
+Zhangzhuang route
+
+为什么集团版的基座和项目route没有拆分开来
+
+​    //测试&开发环境
+
+​    if (!IsWorkEnv) {
+
+​      window.open(
+
+​        `http://qw-h5.focus-test.cn:8088/pages/router/wechatAuth/initial/index?projectId=${currentUser?.projectId}`,
+
+​        '_blank',
+
+​      );
+
+​      return;
+
+​    }

@@ -92,6 +92,12 @@ git push
 
 
 
+### Case3
 
+本地分支commit了，想换到另一个分支
 
-所有tab下的表格只能选择一个，切换tab要保存选中的状态
+```bash
+git checkout newBranch
+git merge master
+```
+

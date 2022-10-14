@@ -51,16 +51,26 @@
 | episode       | ˈɛpəˌsoʊd  | 剧集，插曲       |
 | intersection  |            | 交点，相交       |
 | resume        | ˈrɛzəˌmeɪ  | 简历，摘要       |
+| figure        |            | 数字             |
+| figure out    |            | 想出，算出       |
 |               |            |                  |
 |               |            |                  |
-|               |            |                  |
-|               |            |                  |
 
 
 
 
 
 
+
+Thanks for being here
+
+Its my pleasure thanks for having me on 
+
+So Eddie u have a very robust resume of a bunch of at different compyies and you have been at glassdoor years
+
+Tell us ur coding begin
+
+i was on message board with friends
 
 
 
