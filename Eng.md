@@ -42,21 +42,49 @@
 
 ## Listening
 
-| 单词          | 英标       | 中文             |
-| ------------- | ---------- | ---------------- |
-| garage        | ɡəˈrɑː(d)ʒ | 车库，加油站     |
-| steak         | steɪk      | 牛排             |
-| comprehension |            | 理解             |
-| engage        |            | 从事，参与，聘请 |
-| episode       | ˈɛpəˌsoʊd  | 剧集，插曲       |
-| intersection  |            | 交点，相交       |
-| resume        | ˈrɛzəˌmeɪ  | 简历，摘要       |
-| figure        |            | 数字             |
-| figure out    |            | 想出，算出       |
-|               |            |                  |
-|               |            |                  |
+| 单词               | 英标       | 中文             |
+| ------------------ | ---------- | ---------------- |
+| garage             | ɡəˈrɑː(d)ʒ | 车库，加油站     |
+| steak              | steɪk      | 牛排             |
+| comprehension      |            | 理解             |
+| engage             |            | 从事，参与，聘请 |
+| episode            | ˈɛpəˌsoʊd  | 剧集，插曲       |
+| intersection       |            | 交点，相交       |
+| resume             | ˈrɛzəˌmeɪ  | 简历，摘要       |
+| figure             |            | 数字             |
+| figure out         |            | 想出，算出       |
+| freelance          |            | 自由职业者       |
+| folks              |            | 家人，乡下人     |
+| spoiler            |            | 剧透             |
+| spoiler alert      |            |                  |
+| bootcamp           |            | 培训班           |
+| drop out           |            | 退学             |
+| pitch              |            | 投掷             |
+| **pitch yourself** |            | 推销自己         |
+|                    |            |                  |
+|                    |            |                  |
+|                    |            |                  |
+|                    |            |                  |
+|                    |            |                  |
+|                    |            |                  |
 
 
+
+
+
+没听出来
+
+end up结果
+
+move back搬回去
+
+frame your story编故事
+
+Especially nowadays
+
+
+
+especially with the rise of `bootcamps`, `certifications`. There are so many different entry points. And so I’m wondering when you `decided to` drop out and you're building your resume, what was the climate like and how were you able to pitch yourself as an exciting candidate without that formal training?
 
 
 

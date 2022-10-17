@@ -3,9 +3,9 @@
 + 任务内容url正则匹配
 + 
 
-**积分后台Todo List**
+**集团版Todo List**
 
-+ 
++ 找case-group线上找张撞改
 
 **UI校对**
 
@@ -21,18 +21,21 @@
 
 ### 日常
 
-需求开发
+本周总结
 
-- Rscode文档学习-学习rscode代码发布管理系统中本地dev，测试test，正式work环境的相关知识。
+- Rscode文档学习-学习rscode代码发布管理系统相关知识
 
-- 极客云集团版-参与需求评审，主要涉及选择员工传递字段不一致以及table编辑删除权限控制。传参需要尽量统一。
+- 极客云集团版-初始化搭建了项目，开通产品权限。参与需求评审，与后端对接需要更改的接口以及针对集团版权限适配cookie等。
 
-+ 极客云ui-完成素材库删除弹框组件更换ui修改，完成渠道活码ui修改
++ 公众号授权跳转页-完成企微h5跳转页开发联调
++ 任务中心优化-完成表情框关闭优化，任务模块拖动速度优化
 
 
 
-+ 极客云集团版-等待后端完成cookie适配，以及自查所有接口是否适配集团版
-+ Rscode文档学习-文档wiki时间太久2016年，部分参数，环境已经有所改变，需要对照现存Rscode平台部署流程以及控制台代码学习
++ 等待测试-任务中心优化和跳转页等测试排期
++ 极客云集团版-等待后台完成接口检查，完成集团版案场接口cookie适配后进行集团版开发联调
+
+
 
 
 
@@ -69,9 +72,15 @@ nn
 
 许飞
 
-极客云-积分体系前台H5联调 9.17-9.21
+极客云-任务中心表情框关闭&拖动模块优化 10.8-10.8
 
-极客云-积分体系前台H5联调 9.22-9.23
+极客云-ui走查 10.8-10.9
+
+极客云-测试环境公众号授权跳转 10.10-10.12 
+
+极客云集团版-权限&产品开通，项目初始化搭建 10.13-10.14
+
+
 
 
 
@@ -475,6 +484,11 @@ replace -- 替换掉当前的 history 记录，跳转到指定的url，这个方
 
 ```jsx
 //用array.some()
+ const skipLogin = skipLoginList.some((url) =>
+      window.location.href?.match(url)
+ )
+ if (skipLogin) return // 在skipLoginList中的路由不需要登录
+ tryLogin()
 ```
 
 
@@ -703,53 +717,3 @@ CodeSnap贴代码
 127.0.0.1 	test.focus-test8.cn
 127.0.0.1     qw-h5.focus-test.cn
 
-
-
-
-
-/manage/media/official/authUrl
-
-
-
-集团版智慧案场基座
-
-liangliang
-
-```
-curl 'http://sc-authority.focus-test.cn/group/backstage/product/list' \
-  -H 'Accept: */*' \
-  -H 'Accept-Language: zh,en;q=0.9,zh-CN;q=0.8' \
-  -H 'Cache-Control: no-cache' \
-  -H 'Connection: keep-alive' \
-  -H 'Cookie: focus_pc_city_p=house; focus_city_p=house; focus_city_c=110100; focus_city_s=bj; gr_user_id=09fdd6c4-3359-4ee3-b588-311fdadc2cb5; ticket=YkthWmg5REFIdjE2RDZSTGPbsyILrR047uH1nOihZOFCfuDV7g8loc2eHDdrM1epXcURstcXOvc40wXFJCQVBg==; tscinf=ZmVpeHUyMTk3NTJAc29odS1pbmMuY29tfDEyNy4wLjAuMXwxNjY1NTU2MTA4ODU1fGZlaXh1MjE5NzUy; tscdig=f42f7ce09415d9f3888be71938fa4d62; tsrdig=AFzwSf50oZHSx7qCC3zCToyb/dfih7DehqBEbjcRMydfgc1xb92ZtoZ8/LuPizo6CBjDWvuNSZHm1s%2BlB7%2BPjoum0SV60krdhh1KBaLjWiFvuJXdF57U7epKWsYgvSk9j15XdxxQgGvjc86sNwpwQhBVbIKMGcEpCJU8tkU9S9g%3D; FOCUS_A_UDIG=EuCSyB/wdMlsYuUaRwBouPsR1KFXSfgI9sHt0Lf1S5oi9H/47Q8Vkq8PMURDi/MnPMv9y42Rc2RgS6NEfygn9MDYrSzZooblDYfRTjylosqWeHAa3T8BSGrzTfWPzXXaRCYWoAqkmJbbawyvKTvxNnrgf4bPa47bkfvxrVkmrvc=; sc_info=MTUyMTQzODE0Njl8NjY2Njc2NjQwfDY2NjY3NjIwOXwxNjY1NTU3MjU5MDUz; sc_sign=UQgUMkZiNZifaaiRrmJwgbv1dADCB2fzwbONthnsw835K+cVh2WRDlKS7X8s7rBzmuptoDdBjyGaWFdvid6Hu+ik4sYbyYO3hBKK5wxuEg8EkV0ljnDh1PlfTLj7C7RZGGtzQri7FSYcSwIMrITko5ZK/7yU0NKjpH7IMv5Bdo9NjRynRi2L4MOKk9ODTYQZ5wZWay0bNUzJXEG/NzlWLXTAtPI0+tm2ermzrnb+sQEwu7zbDcVZCI19H/T2t3V9ZIxquTrUlgAiGAYWhCeY2e/Zk9tSmv0kLo3GKP4wmJH4XI8R3HkeYPR9/Be1lPWjE2UNiZXRMbgZNig8TWUUrg==; sc_dm=Zm9jdXMtdGVzdC5jbg==; sc_group=1' \
-  -H 'Origin: http://test.focus-test.cn:8000' \
-  -H 'Pragma: no-cache' \
-  -H 'Referer: http://test.focus-test.cn:8000/' \
-  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
-  --compressed \
-  --insecure
-```
-
-![image-20221012145647945](/Users/xufei/Library/Application Support/typora-user-images/image-20221012145647945.png)
-
-
-
-Zhangzhuang route
-
-为什么集团版的基座和项目route没有拆分开来
-
-​    //测试&开发环境
-
-​    if (!IsWorkEnv) {
-
-​      window.open(
-
-​        `http://qw-h5.focus-test.cn:8088/pages/router/wechatAuth/initial/index?projectId=${currentUser?.projectId}`,
-
-​        '_blank',
-
-​      );
-
-​      return;
-
-​    }
