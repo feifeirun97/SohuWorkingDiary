@@ -18,6 +18,8 @@
 员工群发
 
 + 素材库按1.2.4的来
++ tab问题 hover
++ 
 
 ### 日常
 
@@ -681,6 +683,9 @@ window.devicePixelRatio=物理像素 /CSS像素
 //smartQw => smartGroupQw
 //nigix每个分支
 ⚠️缺少集团版权限
+
+//http://smart-case-admin.focus-test.cn/
+//集团后台
 ```
 
 
