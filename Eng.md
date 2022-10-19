@@ -61,7 +61,7 @@
 | drop out           |            | 退学             |
 | pitch              |            | 投掷             |
 | **pitch yourself** |            | 推销自己         |
-|                    |            |                  |
+| self doubt         |            | 自我怀疑         |
 |                    |            |                  |
 |                    |            |                  |
 |                    |            |                  |
