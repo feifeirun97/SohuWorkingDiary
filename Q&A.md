@@ -25,16 +25,16 @@
 
 **需求开发**
 
-- 第三季度答辩-参与创新平台组第三季度答辩
+- 极客云集团版开发-在极客云测试集团下绑定了三个项目进行联调开发。今日完成会话分析一级菜单下消息存档&敏感词统计需求的集团版联调和权限控制
 
-- package打包学习-学习如何npm公网打包、配置package.json文件、发布到npm
+- 极客云项目版权限适配-项目版部分需求能访问到集团资源，需要对编辑删除权限作限制。与后端约定部署在test9分支开发
+
+- webpack打包学习-学习如何在webpack.config.js文件中配置loader加载器，包括对统一类型文件采取多loader处理时的配置情况
 
   
 
-+ 公共ts类型提取-主要针对极客云smart-qw和智慧案场smart-case两个项目的通用类型约束，希望通过提取打包的方式维护这些通用类type
-+ package打包-学习如何在focus内网建立 & 维护一个打包package仓库，可以用import方式安装依赖
-
-
++ 极客云集团版开发-素材库，话术库项目版和集团版的表格权限开发
++ webpack打包学习-针对webpack中的plugin配置项学习如何使用plugin & 自动配置生成html文件和css打包文件
 
 
 
@@ -676,6 +676,7 @@ window.devicePixelRatio=物理像素 /CSS像素
 //smartQw => smartGroupQw
 //nigix每个分支
 ⚠️缺少集团版权限
+//集团详情-企业微信tab-新增开通单-sopid写0
 
 //http://smart-case-admin.focus-test.cn/
 //集团后台

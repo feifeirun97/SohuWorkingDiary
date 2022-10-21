@@ -271,7 +271,7 @@ module: {
 
 ![图片](https://mmbiz.qpic.cn/mmbiz/XP4dRIhZqqUJj3vtys4fGFlKZtKaRrwfQNJX0wsgeZ1mPDo3opc7yJqQtdOuRb4PscUukUZwBqhKbxfyHn5rJw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
-#### 实现css前缀自动补充
+#### 实现css前缀自动补充【未成功可能是版本问题】
 
 > css3在浏览器中会存在兼容性问题，我们可以通过手动给属性加上前缀来解决。autoprefixer插件也可以帮我们完成
 
@@ -331,3 +331,74 @@ module.exports = {
 ```
 
 ![图片](https://mmbiz.qpic.cn/mmbiz/XP4dRIhZqqUJj3vtys4fGFlKZtKaRrwfUDbNNyBHCnb3JOeENDMBaLcAduPrD0H4e61gNjD6cpovo4Jy5VCibbQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
+
+#### 实现css以文件形式导出
+
+> 随着项目的增大，我们不想把那么多的样式都放在style标签中，我们想用link标签引入，这时我们就需要使用**mini-css-extract-plugin**
+
+```bash
+yarn add mini-css-extract-plugin -D  
+```
+
+```js
+  
+const path = require('path')  
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')  
+module.exports = {  
+  entry: './src/index.js',  
+  output: {  
+    filename: 'main.js',  
+    path: path.resolve(__dirname, './dist')  
+  },  
+	mode: 'development',  
+  module: {  
+    rules: [  
+      {  
+        test: /\.css$/,  
+        use: [  
+          MiniCssExtractPlugin.loader,  
+          'css-loader',  
+          'postcss-loader'  
+        ]  
+      }  
+    ]  
+  },  
+  plugins: [  
+    new MiniCssExtractPlugin({  
+      filename: "css/[name].css"  
+    })  
+  ]  
+}    
+```
+
+> - MiniCssExtractPlugin可以配置输出文件名
+> - [name]为占位符，引入的时候是什么名字，导出的时候就是什么名字
+> - css/表示导出到css文件夹下
+
+![图片](https://mmbiz.qpic.cn/mmbiz/XP4dRIhZqqUJj3vtys4fGFlKZtKaRrwfmVK2W55D1LbT9254t9RaJYcuGkq0mATdZmNNftlhEPTlQQ6zgJur9w/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
+
+#### 实现自动生成html文件
+
+> dist文件夹下html是我们手动创建的，**html-webpack-plugin**可以自动生成。并且自动引入依赖
+
+```bash
+yarn add html-webpack-plugin@4.5.2 -D
+```
+
+```js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')  
+const HtmlWebpackPlugin = require('html-webpack-plugin')  
+module.exports = {  
+	//...
+  plugins: [  
+    new MiniCssExtractPlugin({  
+      filename: "css/[name].css",  
+    }),  
+    new HtmlWebpackPlugin({  
+      template: './src/index.html'  
+    })  
+  ]  
+}    
+```
+
+![图片](https://mmbiz.qpic.cn/mmbiz/XP4dRIhZqqUJj3vtys4fGFlKZtKaRrwfOgffiaEUmoQFzX0tDmLkjd122m6wMd6u09ssMYkrPfvQibWttic4j3cLw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
