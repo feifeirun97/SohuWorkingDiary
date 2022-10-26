@@ -402,3 +402,50 @@ module.exports = {
 ```
 
 ![图片](https://mmbiz.qpic.cn/mmbiz/XP4dRIhZqqUJj3vtys4fGFlKZtKaRrwfOgffiaEUmoQFzX0tDmLkjd122m6wMd6u09ssMYkrPfvQibWttic4j3cLw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
+
+#### 实现打包清空dist文件夹
+
+> 虽然打包后同文件名内容会被覆盖，有些不需要的旧文件依旧会存在。**clean-webpack-plugin**解决问题
+
+```bash
+yarn add clean-webpack-plugin -D    
+```
+
+```js
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+  plugins: [  
+    new MiniCssExtractPlugin({  
+      filename: "css/[name].css",  
+    }),  
+    new HtmlWebpackPlugin({  
+      template: './src/index.html'  
+    }),  
+    new CleanWebpackPlugin()  
+  ]  
+```
+
+#### 实现图片在JS文件中引入
+
+> 打包图片可以使用url-loader，**虽然在webpack5后都被废弃了，使用asset modules代替**
+
+```
+yarn add url-loader file-loader -D
+```
+
+```js
+module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: {
+          loader:'url-loader',
+          options:{
+            name: '[name].[ext]',
+            limit: 1024*3
+          }
+        }	
+      }
+    ],
+  },
+```
+
