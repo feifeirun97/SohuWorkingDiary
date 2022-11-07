@@ -84,21 +84,6 @@ Especially nowadays
 
 
 
-especially with the rise of `bootcamps`, `certifications`. There are so many different entry points. And so I’m wondering when you `decided to` drop out and you're building your resume, what was the climate like and how were you able to pitch yourself as an exciting candidate without that formal training?
-
-
-
-
-
-Thanks for being here
-
-Its my pleasure thanks for having me on 
-
-So Eddie u have a very robust resume of a bunch of at different compyies and you have been at glassdoor years
-
-Tell us ur coding begin
-
-i was on message board with friends
 
 
 
@@ -111,8 +96,17 @@ i was on message board with friends
 
 
 
+## Week18
 
-
+| 单词                                 | 英标   | 中文           |
+| ------------------------------------ | ------ | -------------- |
+| adept                                | əˈdɛpt | 熟练的，能手   |
+| be adept at                          |        |                |
+| optimal                              |        | 最优的，最佳的 |
+| contraction                          |        | 收缩           |
+| contract                             |        | 合同           |
+| recap                                |        | 总结           |
+| to reecap on what i have been saying |        |                |
 
 
 
