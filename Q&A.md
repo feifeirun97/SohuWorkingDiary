@@ -13,7 +13,11 @@
 + 11.5
 + 11.7
 
+**通配符文档修改**
 
+```js
+https://focus.feishu.cn/docx/doxcnA6hEdPn8C2OeQNUiEAEcyf
+```
 
 https://focus.feishu.cn/sheets/shtcnuNkn0f4lAdPeUl8q4oW6Rd?sheet=cxyIOV
 
@@ -35,10 +39,10 @@ https://focus.feishu.cn/sheets/shtcnuNkn0f4lAdPeUl8q4oW6Rd?sheet=cxyIOV
 
 **需求开发**
 
-- pro组件库开发-焦点组件库新增pro-header组件开发，已提merge request
+- pro组件库开发-焦点组件库新增pro-header组件开发根据《UI规范2.0——前端渐进式修改》规范修改
 
-- 极客云项目版-朋友圈运营需求开发，完成创建朋友圈页中Form表单UI布局，预览页UI布局，以及部分表单受控组件开发
-- 极客云集团版-集团版接口适配，完成消息存档需求的接口更换&联调适配
+- 极客云项目版-朋友圈运营需求开发，完成创建朋友圈页自动打标签部分的受控组件开发
+- 极客云集团版-
 
 
 
@@ -688,8 +692,37 @@ window.devicePixelRatio=物理像素 /CSS像素
 //集团后台
 ```
 
+## week19
 
+> 微信开发平台登陆
 
+```js
+//https://open.weixin.qq.com/wxaopen/serviceprovider/AppList?token=bec2cef2572655239a22ce383be946ceee6d5e06
+
+//challenking@163.com
+//bodian123
+```
+
+> pfd
+
+```
+npm run dev:only
+微信开发者工具
+小程序 +号 路径dist/dev/mp-weixin
+```
+
+初始化配置![](/Users/xufei/Library/Application Support/typora-user-images/image-20221108182404482.png)
+
+锁定页面开发
+
+![image-20221108182346618](/Users/xufei/Library/Application Support/typora-user-images/image-20221108182346618.png)
+
+> 
+>
+> 
+>
+> 
+>
 > 基座项目观察者模式，用户信息，怎么从基座传递子项目，子项目怎么接收
 >
 > rscode 怎么起sever， 怎么html，复制到哪个路径
