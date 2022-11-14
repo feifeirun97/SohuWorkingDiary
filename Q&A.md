@@ -1,3 +1,7 @@
+
+
+明日银行卡
+
 **任务中心Todo List**
 
 + 任务内容url正则匹配
@@ -8,10 +12,18 @@
 + 接口*4 员工配置
 + 接口*5 敏感词
 
-**加班**30元
+**基建Todo List**
 
-+ 11.5
++ proxy.ts 中间层导向test后端
++ types提取
+
+**加班9.30后**
+
++ 9.2
++ 11.4
+
 + 11.7
++ 11.8
 
 **通配符文档修改**
 
@@ -41,7 +53,7 @@ https://focus.feishu.cn/sheets/shtcnuNkn0f4lAdPeUl8q4oW6Rd?sheet=cxyIOV
 
 - pro组件库开发-焦点组件库新增pro-header组件开发根据《UI规范2.0——前端渐进式修改》规范修改
 
-- 极客云项目版-朋友圈运营需求开发，完成创建朋友圈页自动打标签部分的受控组件开发
+- 极客云项目版-朋友圈运营需求开发，完成导出任务数据，朋友圈任务列表，列表页对任务进行删除/终止接口联调
 - 极客云集团版-
 
 
@@ -89,7 +101,13 @@ https://focus.feishu.cn/sheets/shtcnuNkn0f4lAdPeUl8q4oW6Rd?sheet=cxyIOV
 
 
 
+> [探马账号](https://account.tanmarket.cn/#/login?corpId=ww2c6fbc86550ffe2f)
 
+```js
+//https://account.tanmarket.cn/#/login?corpId=ww2c6fbc86550ffe2f
+//admin_cjxh0426
+//Cj112358
+```
 
 
 
@@ -702,6 +720,8 @@ window.devicePixelRatio=物理像素 /CSS像素
 //challenking@163.com
 //bodian123
 ```
+
+
 
 > pfd
 
