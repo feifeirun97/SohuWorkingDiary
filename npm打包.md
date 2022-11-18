@@ -1,4 +1,4 @@
-### Step 1: npm account
+## Npm发包流程
 
 ```bash
 #https://www.npmjs.com/signup
