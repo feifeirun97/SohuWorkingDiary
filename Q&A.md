@@ -5,7 +5,11 @@
 **任务中心Todo List**
 
 + 任务内容url正则匹配
-+ 
+
+**朋友圈Todo List**
+
++ 企业发表带?purpose=2
++ 打开vs code首选项里面的设置，分别搜索editor.formatOnSave以及editor.formatOnType，将对应设置前的选择框取消勾选。
 
 **集团版Todo List**
 
@@ -17,6 +21,14 @@
 + proxy.ts 中间层导向test后端
 + types提取
 
+
+
+
+
+
+
+
+
 **加班9.30后**
 
 + 9.2
@@ -24,6 +36,10 @@
 
 + 11.7
 + 11.8
++ 11.14
++ 11.15
++ 11.16
++ 11.18
 
 **通配符文档修改**
 
@@ -753,9 +769,46 @@ npm run dev:only
 > + 
 > + 
 
+## Week20
 
+> 图片自适应展示？
 
+```js
+object-fit: contain;
+```
 
+> 如何手动加朦层？
+
+```css
+ .imgContainer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    &:hover {
+      .bg {
+        z-index: 10;
+      }
+    }
+
+    .picture {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+      background: #00000080;
+    }
+  }
+```
 
 
 
@@ -789,3 +842,4 @@ CodeSnap贴代码
 127.0.0.1 	test.focus-test8.cn
 127.0.0.1     qw-h5.focus-test.cn
 
+ 
