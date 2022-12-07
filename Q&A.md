@@ -1,3 +1,39 @@
+编辑： 未开始才能编辑 status =1
+
+删除： 进行中不能删除 status =2
+
+终止： 员工任务type=2且进行中status =2
+
+
+
+
+
+**本周总结**
+
+- 极客云集团版-员工分析集团权限适配 & 测试跟进，员工管理-任务中心权限适配
+
+- 极客云项目版-朋友圈运营后台测试跟进 & 上线
+
+- 极客云SCRM数据页-员工排行tab页开发
+
+- CSS-学习opacity visibility display控制显隐的区别
+
+  
+
++ 极客云集团版-员工管理-任务中心测试跟进
+
++ 极客云SCRM数据页-开发员工排行联调 & 开发
+
+
+
+**许飞**
+
+- 极客云项目版-朋友圈运营后台测试跟进 & 上线 11月28日-11月30日
+- 极客云集团版-员工分析，任务中心集团版本适配 12月1日-12月2日
+- 极客云SCRM数据页-员工排行tab页开发 12月2日
+
+
+
 
 
 明日银行卡
@@ -9,17 +45,22 @@
 **朋友圈Todo List**
 
 + 企业发表带?purpose=2
-+ 打开vs code首选项里面的设置，分别搜索editor.formatOnSave以及editor.formatOnType，将对应设置前的选择框取消勾选。
++ 逾期
++ hover超过200...
 
 **集团版Todo List**
 
-+ 接口*4 员工配置
++ 渠道
 + 接口*5 敏感词
++ 
 
 **基建Todo List**
 
 + proxy.ts 中间层导向test后端
 + types提取
++ 
+
+  yarn link调试npm包
 
 
 
@@ -67,18 +108,18 @@ https://focus.feishu.cn/sheets/shtcnuNkn0f4lAdPeUl8q4oW6Rd?sheet=cxyIOV
 
 **需求开发**
 
-- pro组件库开发-焦点组件库新增pro-header组件开发根据《UI规范2.0——前端渐进式修改》规范修改
+- 朋友群运营-测试跟进及bug修复，校验规则改动&预览ui设计稿改动同步
 
-- 极客云项目版-朋友圈运营需求开发，完成导出任务数据，朋友圈任务列表，列表页对任务进行删除/终止接口联调
-- 极客云集团版-
+- 极客云集团版-好友欢迎语集团权限测试跟进及bug修复
+
+- 拼房帝小程序-逆地址解析剩余api替换，已提merge request
 
 
 
-+ pro组件库开发-焦点组件库新增pro-header组件开发根据《UI规范2.0——前端渐进式修改》规范修改
 
-- 极客云项目版-朋友圈运营需求开发，完成创建朋友圈页自动打标签部分的受控组件开发
++ 极客云集团版-员工分析集团权限适配
 
-  
+- 朋友群运营-测试跟进及bug修复，ui走查
 
 
 ### 总结
@@ -759,15 +800,28 @@ npm run dev:only
 >
 > 
 >
-> 基座项目观察者模式，用户信息，怎么从基座传递子项目，子项目怎么接收
+> 基座项目发布订阅模式，用户信息，怎么从基座传递子项目，子项目怎么接收
+>
+> app.tsx
+>
+> BUs ，emmiton
+
+
+
+> 
 >
 > rscode 怎么起sever， 怎么html，复制到哪个路径
 >
-> 11月中旬npm打包。优先搞，这周五沟通
+
+第一次接触到docker相关，后续业务开发之余抽时间看
+
+截图label+宽度
+
+> 
 >
-> + 
-> + 
-> + 
+> 
+>
+> 
 
 ## Week20
 
@@ -812,34 +866,7 @@ object-fit: contain;
 
 
 
-FastStone转动图
-
-ProcessOn流程图
-
-CodeSnap贴代码
 
 
 
 
-
-
-
-127.0.0.1 	test.focus-dev.cn
-127.0.0.1 	test.focus-test.cn
-127.0.0.1 	test.focus-dev1.cn
-127.0.0.1 	test.focus-test1.cn
-127.0.0.1 	test.focus-dev2.cn
-127.0.0.1 	test.focus-test2.cn
-127.0.0.1 	test.focus-dev3.cn
-127.0.0.1 	test.focus-test3.cn
-127.0.0.1 	test.focus-dev6.cn
-127.0.0.1 	test.focus-test6.cn
-127.0.0.1 	test.focus-dev7.cn
-127.0.0.1 	test.focus-test7.cn
-127.0.0.1 	test.focus-dev9.cn
-127.0.0.1 	test.focus-test9.cn
-127.0.0.1 	test.focus-dev8.cn
-127.0.0.1 	test.focus-test8.cn
-127.0.0.1     qw-h5.focus-test.cn
-
- 
