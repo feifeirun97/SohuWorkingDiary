@@ -1,3 +1,5 @@
+
+
 编辑： 未开始才能编辑 status =1
 
 删除： 进行中不能删除 status =2
@@ -13,8 +15,6 @@
 - 企微SCRM数据页-tab3开发&联调，完成6个接口联调，4个页面开发
 
 - ts配置-tsconfig文件主要配置项学习
-
-
 
 + ui整改-好友欢迎语新建编辑页ui重构，组件替换
 
@@ -878,9 +878,23 @@ object-fit: contain;
   }
 ```
 
+## Week24
 
+> 下载如何拿到header中的文件名？
 
+```
+默认情况下，header只有六种 simple response headers （简单响应首部）可以暴露给外部：
+Cache-Control
+Content-Language
+Content-Type
+Expires
+Last-Modified
+Pragma
 
+需要在后端设置
+response.setHeader("Access-Control-Expose-Headers", "Content-Disposition")
+response.setHeader("Content-Disposition", ...)
+```
 
 
 
