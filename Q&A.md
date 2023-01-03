@@ -1,12 +1,6 @@
 
 
-编辑： 未开始才能编辑 status =1
-
-删除： 进行中不能删除 status =2
-
-终止： 员工任务type=2且进行中status =2
-
-
+![image-20230102133732579](/Users/xufei/Library/Application Support/typora-user-images/image-20230102133732579.png)
 
 **本周总结**
 
@@ -896,5 +890,14 @@ response.setHeader("Access-Control-Expose-Headers", "Content-Disposition")
 response.setHeader("Content-Disposition", ...)
 ```
 
+## Week27
 
+> pnpm
+
+```
+版本要求 v6
+pnpm install
+pnpm add pkg
+pnpm start
+```
 
