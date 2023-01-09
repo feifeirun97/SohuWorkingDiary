@@ -1,8 +1,13 @@
++ 客户详情管理3.0-测试跟进bug修复&ui走查
++ 朋友圈需求优化-momentEdit & momentCreate & realtorStatistics接口联调
++ ui整改-项目版ui整改迁移至集团版
 
 
-+ 小程序色值问题。好友欢迎语-员工群发记录-客户群发 图片边了
-+ 客户群发没有办法又居中又居左
-+ 
+
++ 朋友圈需求优化-测试跟进bug修复
++ 客户详情管理3.0-需求上线
+
+
 
 ![image-20230102133732579](/Users/xufei/Library/Application Support/typora-user-images/image-20230102133732579.png)
 
