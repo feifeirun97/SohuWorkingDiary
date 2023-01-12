@@ -9,7 +9,15 @@
 
 
 
-![image-20230102133732579](/Users/xufei/Library/Application Support/typora-user-images/image-20230102133732579.png)
+
+
+客户群发提示语
+
+object-fit：cover
+
+T10 bug
+
+![image-20230111174654820](/Users/xufei/Library/Application Support/typora-user-images/image-20230111174654820.png)
 
 
 
@@ -839,6 +847,7 @@ npm run dev:only
 
 ```js
 object-fit: contain;
+object-fit: cover
 ```
 
 > 如何手动加朦层？
