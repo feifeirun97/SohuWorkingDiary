@@ -775,7 +775,7 @@ pnpm start
 老大好，大家好：
 
   "活动中心接入智慧案场"需求，由于使用微前端设计智慧案场架构，子应用需要申请一个项目（目的是子应用自治）, 用来单独发布此子应用的前端资源。
-  项目名称：smart-activity，类型 node，域名 smart-activity.focus.cn 
+  项目名称：smart-activity，类型 node，域名 smart-case.focus.cn
   中文名称：活动中心后台-前端项目
   项目说明：单独发布活动中心后台的前端资源
 
@@ -790,7 +790,7 @@ Regards~
 老大好，大家好：
 
   "活动中心集团版接入智慧案场"需求，由于使用微前端设计智慧案场架构，子应用需要申请一个项目（目的是子应用自治）, 用来单独发布此子应用的前端资源。
-  项目名称：smart-group-activity，类型 node，域名 smart-group-activity.focus.cn 
+  项目名称：smart-group-activity，类型 node，域名 smart-group-qw.focus-test.cn 
   中文名称：活动中心集团版后台-前端项目
   项目说明：单独发布活动中心集团版后台的前端资源
 
@@ -804,6 +804,13 @@ Regards~
 
 
 
+2.13-2.17
+
+
+
+专题页测试跟进&bug修复 2.13日-2.17日
+
+活动中心产品启动 2.16日-2.17日
 
 
 
@@ -811,10 +818,43 @@ Regards~
 
 
 
+## 项目概述
+
+<img src="/Users/xufei/Library/Application Support/typora-user-images/image-20230217144202258.png" alt="image-20230217144202258" style="zoom: 50%;" />
+
+第三方产品嵌入智慧案场 [项目&集团]
+
+我们目前的产品方案是：携带cookie给后端，后端完成接入生成并返回一个兔展的访问链接，链接中携带有用户的信息
+
+### 方案一
+
+直接在smartcase编写，原有嵌入逻辑改成第三方产品网站，做一些跳转、接口封装
+
+**优点：**简单快速
+
+**缺点：**侵入式代码
+
+**可能遇到的问题：**二级域名不一致，cookie等
+
+![image-20230217114306768](/Users/xufei/Library/Application Support/typora-user-images/image-20230217114306768.png)
+
+
+
+### 方案二
+
+新申请2个rscode项目，然后在前端页面的一个空白区域中，定义一个iframe，再对iframe设置此链接。
+
+**优点**：业务分离
+
+**缺点：**麻烦
 
 
 
 
+
+
+
+1. ## 
 
 
 
